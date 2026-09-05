@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this teaching guide or its examples, please cite this repository."
+title: "Practical GenAI Agentic Coding Guide: From a reviewed task to a reproducible research repository"
+abstract: "Part 2 of the Fritsche Lab Practical GenAI series: a hands-on guide to repository context, provider setup, bounded agent tasks, independent verification, and reproducible synthetic research pipelines."
+authors:
+  - family-names: "Fritsche"
+    given-names: "Lars G."
+    affiliation: "University of Michigan"
+    website: "https://fritschelab.org/"
+repository-code: "https://github.com/FritscheLab/practical-genai-agentic-coding-guide"
+url: "https://fritschelab.org/practical-genai-agentic-coding-guide/"
+license: "GPL-3.0-only"
+keywords:
+  - "agentic coding"
+  - "generative AI"
+  - "reproducible research"
+  - "research software"
+  - "teaching"

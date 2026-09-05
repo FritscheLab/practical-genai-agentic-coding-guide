@@ -1,0 +1,160 @@
+---
+title: "From a task to a reproducible repository"
+subtitle: "Practical GenAI · Part 2 · Fritsche Lab"
+author: "Lars G. Fritsche · University of Michigan"
+format:
+  revealjs:
+    theme: [default, lab_theme.scss]
+    slide-number: c/t
+    transition: fade
+    center: false
+    code-copy: true
+    footer: "Fritsche Lab · Practical GenAI · Part 2"
+    width: 1366
+    height: 768
+    margin: 0.08
+---
+
+## Today's change: add a quality gate
+
+1. Compare prepared setups and inspect the baseline.
+2. Specify a quality gate.
+3. Implement with an agent.
+4. Test and review the result.
+5. Leave a useful handoff.
+
+::: {.notes}
+Use docs/lab_meeting/45min_runbook.md. Installation, sign-in, and the first Python run should be complete before the meeting. Selecting a model and checking what each client loads are teaching activities during orientation. The six lessons provide the longer participant path.
+:::
+
+## Build on Part 1
+
+| Part 1 | Part 2 |
+| --- | --- |
+| A reviewed task | A maintained repository |
+| A small R function | A Python package and CLI |
+| Independent expected answers | Tests, run evidence, and review |
+
+The examples share data columns. Part 2 filters the records and selects a representative BMI measurement.
+
+::: {.notes}
+Part 1 already teaches agentic work. Here the learner maintains a working project. The pipeline uses simplified teaching rules, not a clinical analysis.
+:::
+
+## Run the baseline
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m pytest
+python -m pgacg demo \
+  --ehr data/example/ehr_bmi_simulated_data.tsv \
+  --demo data/example/demographics_simulated_data.tsv
+```
+
+1,074 measurements → 12 selected people, 218 excluded rows.
+
+Synthetic data only. Keep PHI, PII, and keys out of terminals and shared screens.
+
+::: {.notes}
+Use Python 3.10–3.12 in the prepared virtual environment. Open the actual summary, manifest, and one output. Reason counts may overlap. Check the service and account approval separately from model choice; see docs/reference/lab-data-policy.md. For Claude Code through U-M GPT Toolkit, check [current ITS eligibility guidance](https://its.umich.edu/computing/ai/faq) and portal access before the session. Each participant must use their own authorized account and token; do not share them. Participants without authorized access can use the manual exercise and published setup instructions.
+:::
+
+## Compare how your setups read the project
+
+Select a model in your client, then use **Ask** with the same orientation prompt.
+
+- Record the client, model, and local or remote session.
+- Check which instructions, settings, and skills it found.
+- Compare its explanation with the contract, code, and tests.
+- Note what differs across your setups.
+
+::: {.notes}
+Use the five-to-twelve-minute orientation slot for this comparison. Have pairs use their own authorized accounts with the Lesson 1 prompt and trace the mismatch threshold from CLI to cleaning and reporting. Open the files each answer names. Inspect AGENTS.md, .codex/config.toml, and .agents/skills/pipeline-review/SKILL.md; the latter two are included, though discovery and settings differ by client. The Codex config leaves model selection to the participant's runtime setup. Record model and client changes separately, and check permissions independently of Ask/Plan/Agent modes. Without a second authorized setup, use the published client instructions for comparison.
+:::
+
+## Agree on the quality gate
+
+Fraction = input rows flagged for implausible height **or** weight / all input rows.
+
+- Count a row with both reasons once.
+- Exactly 20% passes; more than 20% fails.
+- Empty input has fraction zero.
+- Preserve artifacts on QC failure; return exit code 2.
+
+::: {.notes}
+The full spec is Lesson 2. Missing height/weight, BMI mismatch, and IQR flags alone do not count. Runtime errors return 1; syntax errors also use 2, distinguish them by artifacts.
+:::
+
+## Work through the boundary cases
+
+| Ten input rows | Fraction | Result |
+| --- | --- | --- |
+| Two different height/weight exclusions | 0.20 | Pass |
+| One row with both reasons | 0.10 | Pass |
+| Three different height/weight exclusions | 0.30 | Fail |
+| Only missingness and BMI mismatch | 0.00 | Pass |
+
+Use **Plan** if the rule or implementation approach still needs discussion.
+
+::: {.notes}
+Have participants explain the answers before consulting the agent. Planning is useful for unresolved choices, such as where to calculate the fraction and record the result. Compare any proposed rule with the agreed cases before allowing edits; a plan does not establish that the method is appropriate for a study.
+:::
+
+## Implement the agreed quality gate
+
+Once the rule and approach are clear, use **Agent** to edit and test. Give it the complete prompt in Lesson 3.
+
+- Name the method, files, and acceptance cases.
+- Add the helper, flag, and recorded QC decision.
+- Keep cleaning and record selection unchanged.
+- Run checks and report actual results.
+
+::: {.notes}
+Check the requested workspace and tool access, then inspect the changed files as the agent works. Return to discussion if a new method decision appears. The mismatch threshold and category tables already exist; the task is the QC gate.
+:::
+
+## Check passing and failing runs
+
+```bash
+python -m pytest
+python examples/qc_gate/check_acceptance.py
+python -m ruff check .
+```
+
+Inspect the selected records, exit code, summary, and manifest.
+
+A test suite can check the implementation of a rule. A human still reviews the rule.
+
+## See what the repository shares
+
+- `AGENTS.md`: project instructions
+- `.codex/config.toml`: shared Codex access settings
+- `.agents/skills/pipeline-review/`: the included review skill
+- Task brief: the change and expected results
+
+Choose your model in the client. Verify which shared files and settings it uses.
+
+::: {.notes}
+Return to the setup comparison from orientation. The same model in two clients can receive different instructions and tools; changing only the model does not change the client's discovery rules. Use the platform pages for exact locations, trust, and overrides. The review skill is already present; check discovery before using it in the review step. The repository also includes a Codex reviewer definition for an optional separate review conversation. That separate context does not establish independent scientific validation. No extra connector or hook is required for this exercise.
+:::
+
+## Review and hand off
+
+```bash
+git status --short
+git diff
+```
+
+- Inspect new files as well as tracked changes.
+- Resolve concrete defects; rerun checks.
+- Record the setup, decisions, test results, and remaining work.
+- Keep generated runs and protected records out of the commit.
+
+## After the workshop
+
+- Complete the six lessons.
+- Compare with the tested instructor solution after your attempt.
+- Reuse one task brief on your own project.
+- Add skills or delegation when they solve a specific recurring need.
+
+[Fritsche Lab](https://fritschelab.org/) · [Part 1](https://fritschelab.org/practical-genai-coding-guide/) · [Part 2](https://fritschelab.org/practical-genai-agentic-coding-guide/)

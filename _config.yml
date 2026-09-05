@@ -1,0 +1,110 @@
+title: Practical GenAI Agentic Coding Guide
+description: Part 2 of the Fritsche Lab Practical GenAI series. Learn to guide a coding agent through repository context, small changes, tests, and reproducible runs.
+theme: just-the-docs
+color_scheme: light
+lang: en-US
+timezone: America/Detroit
+
+url: "https://fritschelab.org"
+baseurl: "/practical-genai-agentic-coding-guide"
+repository: FritscheLab/practical-genai-agentic-coding-guide
+
+author:
+  name: Lars G. Fritsche
+  affiliation: University of Michigan
+
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+markdown: kramdown
+kramdown:
+  input: GFM
+sass:
+  sourcemap: never
+
+search_enabled: true
+search:
+  heading_level: 3
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  rel_url: true
+  button: false
+  focus_shortcut_key: "k"
+heading_anchors: true
+enable_copy_code_button: true
+back_to_top: true
+back_to_top_text: Back to top
+
+callouts_level: quiet
+callouts:
+  takeaway:
+    title: Take home
+    color: green
+  warning:
+    title: Before you continue
+    color: red
+  check:
+    title: Check your work
+    color: yellow
+  tip:
+    title: Tip
+    color: blue
+
+footer_content: >-
+  Part 2 of the Practical GenAI series. Maintained by
+  <a href="https://medschool.umich.edu/profile/4980/lars-fritsche">Lars G. Fritsche</a>
+  and the <a href="https://fritschelab.org/">Fritsche Lab</a> at the University of Michigan.
+  Code and teaching materials are available in the
+  <a href="https://github.com/FritscheLab/practical-genai-agentic-coding-guide">repository</a>
+  under the <a href="https://github.com/FritscheLab/practical-genai-agentic-coding-guide/blob/main/LICENSE">GNU GPL v3.0</a>.
+
+gh_edit_link: true
+gh_edit_link_text: Edit this page on GitHub
+gh_edit_repository: https://github.com/FritscheLab/practical-genai-agentic-coding-guide
+gh_edit_branch: main
+gh_edit_view_mode: edit
+
+# Only pages with explicit front matter join the documentation navigation.
+# Source code and synthetic data stay in the repository, outside the website.
+exclude:
+  - README.md
+  - AGENTS.md
+  - CLAUDE.md
+  - GEMINI.md
+  - REPO_MAP.md
+  - LICENSE
+  - CITATION.cff
+  - CHANGELOG.md
+  - Makefile
+  - Gemfile
+  - Gemfile.lock
+  - pyproject.toml
+  - requirements-dev.txt
+  - constraints-dev.txt
+  - data/
+  - src/
+  - scripts/
+  - tests/
+  - examples/
+  - runs/
+  - tmp/
+  - vendor/
+  - .bundle/
+  - .jekyll-cache/
+  - .venv/
+  - .github/
+  - .agents/
+  - .codex/
+  - .cursor/
+  - .claude/
+  - .gemini/
+  - docs/lab_meeting/slide_deck.qmd
+  - docs/lab_meeting/slide_deck.html
+  - docs/lab_meeting/slide_deck_files/
+  - docs/lab_meeting/lab_theme.scss
+  - "**/__pycache__/"
+  - "**/*.pyc"
+  - "**/.DS_Store"
