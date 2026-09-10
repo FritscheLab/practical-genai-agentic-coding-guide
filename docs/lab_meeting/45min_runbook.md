@@ -9,7 +9,7 @@ nav_order: 1
 
 ## Prepare
 
-Have participants keep the guide open online and download the [example repository](https://github.com/ilarsf/practical-genai-agentic-coding-example). Choose the [Python path](../paths/python/index.md) or [R path](../paths/r/index.md). Run its setup, tests, and six-row example before the presentation. Prepare an approved [coding client](../platforms/index.md). Use synthetic files throughout.
+Have participants keep the guide open online and download the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example). Choose the [Python path](../paths/python/index.md) or [R path](../paths/r/index.md). Run its setup, tests, and six-row example before the presentation. Prepare an approved [coding client](../platforms/index.md). Use synthetic files throughout.
 
 Open the [six-row example and expected report](../lessons/02-specify.md). Find measurements d, e, and f in the input and `outputs/flagged_rows.tsv` so you can help participants check their counts.
 

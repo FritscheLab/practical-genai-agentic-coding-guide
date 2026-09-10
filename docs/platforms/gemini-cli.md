@@ -44,7 +44,7 @@ Changing the Gemini model keeps Gemini CLI's context files, skills, and policy s
 
 ## Try the review skill
 
-The [pipeline-review skill](https://github.com/ilarsf/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) is already in `.agents/skills/pipeline-review/`. Gemini CLI also supports `.gemini/skills/`, with personal locations under `~/.agents/skills/` and `~/.gemini/skills/`. Use the included copy: within the same scope, `.agents/skills/` takes precedence when names conflict. See the [folder map](portable-context.md) when adapting the setup. [Gemini CLI skills](https://geminicli.com/docs/cli/skills/).
+The [pipeline-review skill](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) is already in `.agents/skills/pipeline-review/`. Gemini CLI also supports `.gemini/skills/`, with personal locations under `~/.agents/skills/` and `~/.gemini/skills/`. Use the included copy: within the same scope, `.agents/skills/` takes precedence when names conflict. See the [folder map](portable-context.md) when adapting the setup. [Gemini CLI skills](https://geminicli.com/docs/cli/skills/).
 
 Run `/skills list` to check that Gemini found it, and `/skills reload` after making changes. Then ask for a review using `pipeline-review`. The documented activation flow asks for consent before loading the skill body and allowing reads of its bundled resources. Check the displayed path so you know which copy you are accepting. [Gemini skill activation](https://geminicli.com/docs/cli/skills/).
 

@@ -43,7 +43,7 @@ For a small, clear edit, a direct implementation request is enough. Use planning
 
 If you arrived from [Python Lesson 1](../paths/python/01-orient.md) or [R Lesson 1](../paths/r/01-orient.md), use that lesson's explanation prompt once your client can read the repository, edit files, and run commands. The prompt below is an optional alternative for a broader setup check.
 
-Open your local [example repository](https://github.com/ilarsf/practical-genai-agentic-coding-example) as the working project and replace the language placeholder:
+Open your local [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example) as the working project and replace the language placeholder:
 
 ```text
 Read AGENTS.md, README.md, and REPO_MAP.md.
@@ -61,7 +61,7 @@ Compare the answer with the files you just used in the quickstart. For Python, i
 
 Return to [Python Lesson 1](../paths/python/01-orient.md) or [R Lesson 1](../paths/r/01-orient.md) to ask where the existing exclusion reasons and summary are written, then compare the explanation with the flagged file. One working client is enough for the exercise. Comparing clients and trying a named reviewer are optional follow-ups.
 
-When you want a pipeline review, try the included [pipeline-review skill](https://github.com/ilarsf/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md). Your client page shows how to find it and whether an adapter or copy is needed. A separate reviewer is another optional step: it is useful when you can give it a specific question, the changed files, and the evidence it needs without holding up the main task.
+When you want a pipeline review, try the included [pipeline-review skill](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md). Your client page shows how to find it and whether an adapter or copy is needed. A separate reviewer is another optional step: it is useful when you can give it a specific question, the changed files, and the evidence it needs without holding up the main task.
 
 External tool connections can wait until you need something the agent cannot already do, such as retrieve a particular documentation source. Check what that connection can access; its permissions may differ from the terminal’s.
 

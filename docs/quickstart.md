@@ -8,7 +8,7 @@ has_toc: false
 
 # Choose your language
 
-Keep this guide open in your browser. Each setup page downloads the [example repository](https://github.com/ilarsf/practical-genai-agentic-coding-example), which contains the runnable code, synthetic data, tests, and offline walkthroughs.
+Keep this guide open in your browser. Each setup page downloads the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example), which contains the runnable code, synthetic data, tests, and offline walkthroughs.
 
 Choose the language you are comfortable reading. You will follow its setup, demo, and six lessons from start to finish. Each page gives you the commands and prompts for that language, with a **Next** link to continue.
 

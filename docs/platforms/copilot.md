@@ -36,7 +36,7 @@ Selecting a model from another provider still leaves you in Copilot's workflow, 
 
 ## Try the review skill
 
-The [shared review skill](https://github.com/ilarsf/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) is already in `.agents/skills/pipeline-review/`. Ask Copilot to use `pipeline-review`, then check whether it loads that procedure. Other documented project locations include `.github/skills/` and `.claude/skills/`; personal skills can live under `~/.copilot/skills/` or `~/.agents/skills/`. Use the included copy here. The [folder map](portable-context.md) explains how to carry it to another project. [Adding Copilot skills](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills).
+The [shared review skill](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) is already in `.agents/skills/pipeline-review/`. Ask Copilot to use `pipeline-review`, then check whether it loads that procedure. Other documented project locations include `.github/skills/` and `.claude/skills/`; personal skills can live under `~/.copilot/skills/` or `~/.agents/skills/`. Use the included copy here. The [folder map](portable-context.md) explains how to carry it to another project. [Adding Copilot skills](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills).
 
 ## Create a reviewer profile
 

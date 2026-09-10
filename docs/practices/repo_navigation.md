@@ -7,7 +7,7 @@ nav_order: 2
 
 # Navigate the repository
 
-In the [example repository](https://github.com/ilarsf/practical-genai-agentic-coding-example), start with `README.md` for the purpose and setup, `AGENTS.md` for working conventions, and `REPO_MAP.md` for the main commands and files. Once you understand the task, use a focused search to find the code and tests you need.
+In the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example), start with `README.md` for the purpose and setup, `AGENTS.md` for working conventions, and `REPO_MAP.md` for the main commands and files. Once you understand the task, use a focused search to find the code and tests you need.
 
 ```bash
 rg --files src R scripts/r tests docs

@@ -8,7 +8,7 @@ description: Understand the included Codex project folders, check the active set
 
 # Codex
 
-The [example repository](https://github.com/ilarsf/practical-genai-agentic-coding-example) includes a working example of Codex project setup: shared instructions, project settings, a review skill, and a named reviewer. Start by checking what Codex loads and whether it can use the environment for your chosen language path. The reviewer is there to try when you have a change ready for review.
+The [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example) includes a working example of Codex project setup: shared instructions, project settings, a review skill, and a named reviewer. Start by checking what Codex loads and whether it can use the environment for your chosen language path. The reviewer is there to try when you have a change ready for review.
 
 **Documentation reviewed: September 5, 2026.** For installation and sign-in, use the official [Codex CLI setup](https://learn.chatgpt.com/docs/codex/cli). The [desktop quickstart](https://learn.chatgpt.com/docs/quickstart) explains selecting Codex in the desktop app. The interface and available access may differ by account.
 
@@ -28,7 +28,7 @@ AGENTS.md
         └── SKILL.md
 ```
 
-Read [AGENTS.md](https://github.com/ilarsf/practical-genai-agentic-coding-example/blob/main/AGENTS.md) for the project conventions and [.codex/config.toml](https://github.com/ilarsf/practical-genai-agentic-coding-example/blob/main/.codex/config.toml) for the client settings. The included configuration is small:
+Read [AGENTS.md](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/AGENTS.md) for the project conventions and [.codex/config.toml](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.codex/config.toml) for the client settings. The included configuration is small:
 
 ```toml
 approval_policy = "on-request"
@@ -70,7 +70,7 @@ Tools do the practical work: opening a file, applying an edit, or running a chec
 
 ## Try the review skill
 
-The [pipeline-review skill](https://github.com/ilarsf/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) is already in `.agents/skills/pipeline-review/`. In the CLI or IDE extension, use `/skills` to find it or mention `$pipeline-review` in your request. Check its displayed path, especially if you also have personal skills under `~/.agents/skills/`. Codex can also select skills from their descriptions. [Codex skills](https://developers.openai.com/codex/skills).
+The [pipeline-review skill](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) is already in `.agents/skills/pipeline-review/`. In the CLI or IDE extension, use `/skills` to find it or mention `$pipeline-review` in your request. Check its displayed path, especially if you also have personal skills under `~/.agents/skills/`. Codex can also select skills from their descriptions. [Codex skills](https://developers.openai.com/codex/skills).
 
 ```text
 $pipeline-review
@@ -80,7 +80,7 @@ with file locations and a small example. Do not modify files.
 
 ## Try the named reviewer
 
-The included [.codex/agents/pipeline-reviewer.toml](https://github.com/ilarsf/practical-genai-agentic-coding-example/blob/main/.codex/agents/pipeline-reviewer.toml) defines the role below. A standalone custom agent file needs `name`, `description`, and `developer_instructions`; its model can inherit from the parent. Personal roles can live in `~/.codex/agents/`. [Codex custom agents](https://learn.chatgpt.com/docs/agent-configuration/subagents).
+The included [.codex/agents/pipeline-reviewer.toml](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.codex/agents/pipeline-reviewer.toml) defines the role below. A standalone custom agent file needs `name`, `description`, and `developer_instructions`; its model can inherit from the parent. Personal roles can live in `~/.codex/agents/`. [Codex custom agents](https://learn.chatgpt.com/docs/agent-configuration/subagents).
 
 ```toml
 name = "pipeline-reviewer"

@@ -42,7 +42,7 @@ Some of these pieces can travel between tools. The Agent Skills specification de
 
 Keep the shared briefing in the repository's root `AGENTS.md`. The included `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` connect their clients to that briefing; Codex and Cursor can read it directly. Those files explain the project. A client settings file, such as `.codex/config.toml`, configures how the tool runs. A skill supplies a procedure the agent can use for a matching task. Putting the same prose in all three places would make the setup harder to maintain.
 
-The [example repository](https://github.com/ilarsf/practical-genai-agentic-coding-example) includes a small Codex configuration and reviewer definition under `.codex/`, plus the shared `pipeline-review` skill under `.agents/skills/`. The [Codex walkthrough](codex.md) explains the included settings. The other client folders in the map below are supported destinations you can add when needed; cloning the example repository does not create every setup shown here. Defining a reviewer also does not mean a review has run.
+The [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example) includes a small Codex configuration and reviewer definition under `.codex/`, plus the shared `pipeline-review` skill under `.agents/skills/`. The [Codex walkthrough](codex.md) explains the included settings. The other client folders in the map below are supported destinations you can add when needed; cloning the example repository does not create every setup shown here. Defining a reviewer also does not mean a review has run.
 
 | Client | Project settings and named roles |
 | --- | --- |
@@ -58,7 +58,7 @@ A leading `~` means your home directory. For example, `~/.codex/config.toml` hol
 
 A skill starts with a directory containing `SKILL.md`. At the top, YAML fields give its `name` and `description`; the procedure follows underneath. Make the description specific enough to explain when you would want the agent to use it. Supporting scripts and reference files can live in the same directory. [Agent Skills specification](https://agentskills.io/specification).
 
-The [pipeline-review skill](https://github.com/ilarsf/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) is already included at `.agents/skills/pipeline-review/SKILL.md`. Codex, Copilot, Cursor, and Gemini CLI support that project location. You can inspect the procedure before using it; no additional skill installation is needed for those clients.
+The [pipeline-review skill](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) is already included at `.agents/skills/pipeline-review/SKILL.md`. Codex, Copilot, Cursor, and Gemini CLI support that project location. You can inspect the procedure before using it; no additional skill installation is needed for those clients.
 
 | Client | Project skills | Personal skills |
 | --- | --- | --- |

@@ -48,7 +48,7 @@ Claude’s `Read`, `Edit`, and `Bash` tools serve different purposes. A skill su
 
 ## Try the review skill
 
-Copy the [included skill](https://github.com/ilarsf/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) from `.agents/skills/pipeline-review/` to `.claude/skills/pipeline-review/` using the [shared setup instructions](portable-context.md). If this creates your first `.claude/skills/` directory, restart Claude before invoking `/pipeline-review` or asking for a matching task. Check the loaded path. Personal skills live under `~/.claude/skills/`. Claude Code supports the Agent Skills format and adds optional fields of its own; keep those additions separate if you share the skill with colleagues using other clients. [Claude Code skills and change detection](https://code.claude.com/docs/en/skills#live-change-detection).
+Copy the [included skill](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) from `.agents/skills/pipeline-review/` to `.claude/skills/pipeline-review/` using the [shared setup instructions](portable-context.md). If this creates your first `.claude/skills/` directory, restart Claude before invoking `/pipeline-review` or asking for a matching task. Check the loaded path. Personal skills live under `~/.claude/skills/`. Claude Code supports the Agent Skills format and adds optional fields of its own; keep those additions separate if you share the skill with colleagues using other clients. [Claude Code skills and change detection](https://code.claude.com/docs/en/skills#live-change-detection).
 
 ## Create a reviewer agent
 

@@ -27,7 +27,7 @@ has_toc: false
 
 [Part 1: Practical GenAI Coding Guide](https://fritschelab.org/practical-genai-coding-guide/) takes us through planning, prompting, reviewing, and documenting code, including work with coding agents. Here we put those habits to work in a project with several moving parts: a Python or R pipeline, tests, documentation, and saved results.
 
-Download the [example repository](https://github.com/ilarsf/practical-genai-agentic-coding-example) and follow this guide online. The example also includes the language walkthroughs for offline use. Choose the language you already use. Each path takes you through its own setup, six lessons, checks, and handoff. Once you start, the commands, prompts, and Next links stay with that language. Both paths teach the same exclusion-report exercise. Along the way, you will give the agent useful context, catch plausible mistakes, and decide when the result is ready to keep.
+Download the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example) and follow this guide online. The example also includes the language walkthroughs for offline use. Choose the language you already use. Each path takes you through its own setup, six lessons, checks, and handoff. Once you start, the commands, prompts, and Next links stay with that language. Both paths teach the same exclusion-report exercise. Along the way, you will give the agent useful context, catch plausible mistakes, and decide when the result is ready to keep.
 
 If you are new to using GenAI for coding, begin with Part 1. If you can already run a script and inspect a change, [start here]({{ '/docs/quickstart.html' | relative_url }}).
 
@@ -60,5 +60,5 @@ If you are new to using GenAI for coding, begin with Part 1. If you can already 
 <aside class="guide-note" aria-labelledby="demo-heading">
   <h2 id="demo-heading">A teaching project you can inspect</h2>
   <p>The example data are synthetic. The pipeline cleans measurements, flags quality issues, and summarizes one row per person. You can inspect the whole example and work out what its rules should do. For a study of your own, start by agreeing on the scientific method with your collaborators.</p>
-  <p><a href="https://github.com/ilarsf/practical-genai-agentic-coding-example">Get the code and example data on GitHub</a>.</p>
+  <p><a href="https://github.com/FritscheLab/practical-genai-agentic-coding-example">Get the code and example data on GitHub</a>.</p>
 </aside>

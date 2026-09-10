@@ -22,7 +22,7 @@ Use the included synthetic files and an approved coding client. See the [lab dat
 You need Git and a terminal. If you already have the exercise repository, open a terminal in its root. Otherwise, clone it first:
 
 ```bash
-git clone https://github.com/ilarsf/practical-genai-agentic-coding-example.git
+git clone https://github.com/FritscheLab/practical-genai-agentic-coding-example.git
 cd practical-genai-agentic-coding-example
 ```
 

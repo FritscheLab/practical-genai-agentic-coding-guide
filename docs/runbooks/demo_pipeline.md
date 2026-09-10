@@ -11,7 +11,7 @@ This reference shows a six-row first run and an optional larger example. Choose 
 
 ## Install and make a first run
 
-Run commands from your local [example repository](https://github.com/ilarsf/practical-genai-agentic-coding-example) root. If you have not downloaded it yet, start with the [Python or R setup](../quickstart.md). These multiline examples use Bash or zsh. In Windows PowerShell, enter the demo command on a single line without the trailing `\` characters.
+Run commands from your local [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example) root. If you have not downloaded it yet, start with the [Python or R setup](../quickstart.md). These multiline examples use Bash or zsh. In Windows PowerShell, enter the demo command on a single line without the trailing `\` characters.
 
 ### Python
 

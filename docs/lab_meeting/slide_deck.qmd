@@ -30,9 +30,9 @@ Use docs/lab_meeting/45min_runbook.md. Participants prepare Python or R and an a
 
 ## Choose your path once
 
-[Python path](https://ilarsf.github.io/practical-genai-agentic-coding-guide/docs/paths/python/) · [R path](https://ilarsf.github.io/practical-genai-agentic-coding-guide/docs/paths/r/)
+[Python path](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/paths/python/) · [R path](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/paths/r/)
 
-Download the [example repository](https://github.com/ilarsf/practical-genai-agentic-coding-example) and keep the guide open online.
+Download the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example) and keep the guide open online.
 
 Both paths use the same six measurements. Follow your path's commands and prompts.
 
@@ -144,4 +144,4 @@ Choose one small improvement whose result you can inspect.
 
 Give the agent context. Verify its work. Leave the next person a clear starting point.
 
-[Fritsche Lab](https://fritschelab.org/) · [Part 1](https://fritschelab.org/practical-genai-coding-guide/) · [Part 2](https://ilarsf.github.io/practical-genai-agentic-coding-guide/)
+[Fritsche Lab](https://fritschelab.org/) · [Part 1](https://fritschelab.org/practical-genai-coding-guide/) · [Part 2](https://fritschelab.org/practical-genai-agentic-coding-guide/)

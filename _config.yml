@@ -5,9 +5,9 @@ color_scheme: light
 lang: en-US
 timezone: America/Detroit
 
-url: "https://ilarsf.github.io"
+url: "https://fritschelab.org"
 baseurl: "/practical-genai-agentic-coding-guide"
-repository: ilarsf/practical-genai-agentic-coding-guide
+repository: FritscheLab/practical-genai-agentic-coding-guide
 
 author:
   name: Lars G. Fritsche
@@ -57,13 +57,13 @@ footer_content: >-
   Part 2 of the Practical GenAI series. Maintained by
   <a href="https://medschool.umich.edu/profile/4980/lars-fritsche">Lars G. Fritsche</a>
   and the <a href="https://fritschelab.org/">Fritsche Lab</a> at the University of Michigan.
-  Read the <a href="https://github.com/ilarsf/practical-genai-agentic-coding-guide">guide source</a>
-  and download the <a href="https://github.com/ilarsf/practical-genai-agentic-coding-example">runnable exercise</a>
-  under the <a href="https://github.com/ilarsf/practical-genai-agentic-coding-guide/blob/main/LICENSE">GNU GPL v3.0</a>.
+  Read the <a href="https://github.com/FritscheLab/practical-genai-agentic-coding-guide">guide source</a>
+  and download the <a href="https://github.com/FritscheLab/practical-genai-agentic-coding-example">runnable exercise</a>
+  under the <a href="https://github.com/FritscheLab/practical-genai-agentic-coding-guide/blob/main/LICENSE">GNU GPL v3.0</a>.
 
 gh_edit_link: false
 gh_edit_link_text: Edit this page on GitHub
-gh_edit_repository: https://github.com/ilarsf/practical-genai-agentic-coding-guide
+gh_edit_repository: https://github.com/FritscheLab/practical-genai-agentic-coding-guide
 gh_edit_branch: main
 gh_edit_view_mode: edit
 
