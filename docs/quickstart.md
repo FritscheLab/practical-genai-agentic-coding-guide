@@ -8,28 +8,28 @@ has_toc: false
 
 # Choose your language
 
-Keep this guide open in your browser. Each setup page downloads the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example), which contains the runnable code, synthetic data, tests, and offline walkthroughs.
+Keep the guide open online. Your path downloads the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example), including code, tests, and offline lessons.
 
-Choose the language you are comfortable reading. You will follow its setup, demo, and six lessons from start to finish. Each page gives you the commands and prompts for that language, with a **Next** link to continue.
+Choose the language you already use. Follow its setup, then the **Next** links through six lessons.
 
 {% include path_choices.html %}
 
-Both paths use the same synthetic data and exclusion-report exercise. You need Git, a terminal, and only your chosen language. Prepare the environment before a presentation, or follow the steps at your own pace. No model API or credentials are needed to run the demo; you can also complete the exercise manually.
+You need Git, a terminal, and your chosen language. Prepare before a workshop or work at your own pace. Running the plot needs no model API or credentials; you can also repair it manually.
 
 ## What you will do
 
-1. Run the baseline and inspect its results.
+1. Run the baseline and open its plot.
 2. Orient yourself in the repository and set up your coding agent.
-3. Work out the exclusion counts from six visible measurements.
-4. Implement the change, verify it, and review the diff.
+3. Identify overlapping bars and clipped labels, then read the local figure specifications.
+4. Repair the plotting function, check the image and tests, and review the diff.
 5. Leave a short handoff describing the change, checks, and any unfinished work.
 
-Your path's setup page also lists all six lessons so you can pick up where you left off. Bookmark that page or your current lesson. Use **Change language** on any lesson if you want to return to this choice.
+Bookmark your path or current lesson. **Change language** returns to this choice.
 
 ## Coming from Part 1
 
-In the [Part 1 quickstart](https://fritschelab.org/practical-genai-coding-guide/docs/QuickStart.html), you asked an assistant to write a small base-R function. Here you will maintain an existing pipeline that selects a representative BMI measurement after filtering. The [data contract](reference/io_contract.md) explains the teaching rule.
+The [Part 1 quickstart](https://fritschelab.org/practical-genai-coding-guide/docs/QuickStart.html) created a base-R function. Here you repair an existing plot using the [exercise brief](lessons/02-specify.md) and local [figure rules](reference/figure-specifications.md).
 
-Use the included synthetic files throughout. Keep patient, participant, student, and employee records out of this workspace and its agent conversations. See the [lab data guidance](reference/lab-data-policy.md) before adapting the workflow to a study.
+Use the supplied invented totals. Keep real records outside the workspace and conversations; read the [lab data guidance](reference/lab-data-policy.md) before adapting this to a study.
 
 Teaching a group? Use the [45-minute workshop](lab_meeting/45min_runbook.md), with each participant's setup completed beforehand.

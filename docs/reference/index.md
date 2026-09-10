@@ -8,13 +8,14 @@ has_toc: false
 
 # Reference
 
-These pages help you run the example, understand its results, and check the assumptions behind a change.
+These pages help you run the plotting example and check the result.
 
-- [Data contract](io_contract.md): schemas, filtering, selection, parameters, and run artifacts.
-- [Exclusion-report example](../lessons/02-specify.md): six visible measurements and the report to produce in either language.
-- [Run the pipeline](../runbooks/demo_pipeline.md): setup, commands, and troubleshooting.
-- [Synthetic data](synthetic-data.md): generation recipe, provenance, and baseline counts.
-- [Lab data and university policy](lab-data-policy.md): PHI, PII, permitted services, and everyday sharing risks.
-- [Sources](sources.md): official documentation and review dates behind platform guidance.
+- [Plotting contract](io_contract.md): fixed categories and counts, function behavior, and image output.
+- [Figure specifications](figure-specifications.md): the local formatting requirements the agent must follow.
+- [Plot-repair exercise](../lessons/02-specify.md): the readability problem, target, and acceptance checks.
+- [Run the plotting example](../runbooks/demo_pipeline.md): setup, commands, and troubleshooting.
+- [Invented example values](synthetic-data.md): where the teaching values come from and what they represent.
+- [Lab data and university policy](lab-data-policy.md): approved services and sharing code, images, and study information.
+- [Sources](sources.md): official documentation behind platform guidance.
 
-Start with the run instructions if you are new to the repository. When you are ready to change a rule, use the data contract to discuss the intended behavior with your mentor or collaborator before implementing it.
+Start with your [language path](../quickstart.md). Before changing the plot, agree on what must remain fixed and what a readable result looks like.

@@ -17,15 +17,15 @@ format:
 
 ## Build, verify, and maintain with a coding agent
 
-Today we will improve one report in an existing research repository.
+Today we will repair a plotting function in an existing repository.
 
-1. Understand the code and the request.
+1. Understand the source and the request.
 2. Make a focused change with an agent.
-3. Check the output and existing tests.
+3. Open the image and run the tests.
 4. Review the diff and leave a handoff.
 
 ::: {.notes}
-Use docs/lab_meeting/45min_runbook.md. Participants prepare Python or R and an approved client before the presentation. The same short path also works at home. Keep all input and shared screens synthetic.
+Use docs/lab_meeting/45min_runbook.md. Participants prepare Python or R and an approved client before the presentation. The same path works at home. The exercise uses invented category totals embedded in source code. Agents work with code, the aggregate image, and test results; no participant records are needed.
 :::
 
 ## Choose your path once
@@ -34,87 +34,95 @@ Use docs/lab_meeting/45min_runbook.md. Participants prepare Python or R and an a
 
 Download the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example) and keep the guide open online.
 
-Both paths use the same six measurements. Follow your path's commands and prompts.
+Both paths plot the same four invented category totals for **Group A** and **Group B**.
 
-The pipeline already works. We will add a clearer explanation of its exclusions.
+The starting image is created successfully, but the groups overlap and long labels are clipped.
 
 ::: {.notes}
-Open the selected path in the guide. Setup, example runs, verification, review, and handoff remain specific to that language. No model API is needed to run the pipeline.
+Open the selected path. Setup, rendering, verification, review, and handoff stay with that language. Python uses Matplotlib; R uses base graphics. No model API is needed to render the plot.
 :::
 
-## Six rows you can explain
+## Start with the image
 
-| Measurement | Height | Weight | Existing result |
-| --- | ---: | ---: | --- |
-| a | 170 | 70 | Keep |
-| b | 175 | 70 | Keep |
-| c | 180 | 81 | Keep |
-| d | Missing | 70 | Exclude: missing height |
-| e | 170 | Missing | Exclude: missing weight |
-| f | Missing | Missing | Exclude: both |
+![R baseline with overlapping groups and clipped category labels](../../assets/images/plotting-before.png){height=390px fig-alt="Baseline chart of invented counts for Groups A and B across four measurement-completeness categories. The groups overlap and category labels are clipped. The next slide lists every count."}
 
-Each row belongs to a different synthetic person. Dates and BMI values are valid.
+Shown: R baseline. Render your path's `runs/baseline/summary.png`.
 
-## What does a labmate want to know?
+## What does a labmate need?
 
-**“Why did six input measurements become three?”**
+**“I need to compare both groups without guessing.”**
 
-The excluded rows are saved in `outputs/flagged_rows.tsv`.
-The summary gives technical totals, but does not explain the reasons.
+| Invented category | Group A | Group B |
+| --- | ---: | ---: |
+| Complete measurements | 42 | 64 |
+| Missing height only | 31 | 18 |
+| Missing weight only | 18 | 12 |
+| Missing height and weight | 9 | 6 |
 
-Open both files before asking for a change.
+Each group totals **100**; together they total **200**.
+
+The task needs no input dataset or participant records.
 
 ## Ask the agent to find its way
 
 ```text
-Read AGENTS.md and REPO_MAP.md. Find the code that writes
-summary.md and explain where the excluded rows are available.
-Do not edit anything yet. Point to the files you used.
+Explain how the plotting function builds and saves the chart.
+Point to the layout settings and tests. Don't edit anything yet.
 ```
 
-Open the files it names. Check its explanation against the six rows.
+Open the source it names. Check the explanation against the functions and tests.
 
 ::: {.notes}
-Use the language-specific orientation prompt if preferred. Show the loaded project instructions and effective tool permissions. A confident explanation still needs a check against the files.
+Use the language-specific orientation prompt. Python uses make_summary_figure() to build the figure and plot_summary(output_path) to save it. R uses plot_summary(output_path). Check the loaded instructions and effective permissions. If the client cannot view images, the learner performs that visual step.
 :::
 
-## The report we want
+## A fictional journal, exact specifications
 
-```text
-3 of 6 input measurements were excluded.
+**Journal of Unnecessarily Specific Figures (JUSF)** · Fictional workshop rules
 
-Missing height: 2
-Missing weight: 2
+:::: {.columns}
+::: {.column width="53%"}
+![Grouped target following the journal rules](../../assets/images/plotting-target.png){height=360px fig-alt="Grouped horizontal bars compare invented counts for Groups A and B. Complete measurements are 42 for A and 64 for B; the other category counts are 31 versus 18, 18 versus 12, and 9 versus 6. The category table gives the full labels."}
+:::
+::: {.column width="47%"}
+- PNG **1800 × 1200**, **300 dpi**; white background.
+- Typewriter: **9 pt**; title **11 pt bold**.
+- Purple A · lime B · black text and borders.
+- Group positions and labels work without color.
 
-Reason counts overlap: one measurement can have both reasons.
-```
-
-Why do the reasons add up to four while only three measurements were excluded?
+[Read all local figure rules](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/reference/figure-specifications.html).
+:::
+::::
 
 ## Give the agent one focused change
 
-Use the implementation prompt in your path.
+Use your language path's prompt, for example:
 
-- Add the readable report using existing exclusion decisions.
-- Keep cleaning and data selection the same.
-- Run the existing tests and explain the changed files.
+```text
+Repair the plotting function to meet docs/reference/figure-specifications.md.
+Preserve values and command behavior. Save the required image and alt text,
+run the checks, and report anything unfinished.
+```
 
-Ask for a short plan if the approach is unclear. Then let the agent edit and run commands.
+The repository holds the details; your request names the job.
 
 ::: {.notes}
-The goal is a request learners can understand and check. No new quality threshold, CLI option, or special run status is needed. Discuss new scope before accepting it.
+No new input file, package, filtering, or scientific calculation is needed. Follow the local fictional-journal requirements; Python and R image bytes may differ. Save the candidate as runs/with-fix/summary.png so the original image remains available.
 :::
 
 ## Verify the result
 
-Run the six-row example again. Read the new summary.
+Open `runs/with-fix/summary.png` alongside the baseline.
 
-- Three excluded measurements; reason counts two and two.
-- Complete-data example: six measurements, no exclusions.
-- Existing tests still pass.
-- Selected and excluded records stay the same.
+- Bars do not overlap; A is above B in each category.
+- Labels, counts, and legend are readable, including in grayscale.
+- Both groups' fixed values and order remain unchanged.
+- Behavioral tests pass.
+- The strict figure checker passes.
 
-Tests and direct inspection answer different questions. Use both.
+Review contrast and write `runs/with-fix/summary.alt.txt` separately.
+
+The strict checker should fail on the original baseline; it does not certify accessibility.
 
 ## Review what changed
 
@@ -125,23 +133,23 @@ git diff
 
 Open new files too. Can you explain each change?
 
-A second agent can help review. Check its findings against the code and examples.
+A second agent can review the source, tests, and aggregate image. Check its findings against the evidence.
 
 ## Leave a useful handoff
 
 Ask the agent for a short note:
 
 ```text
-Summarize what changed, the commands and results we checked,
-and anything still unfinished. Include how to rerun the example.
+Write a short handoff: changes, actual checks and results,
+image and alt-text paths, and anything unfinished or untested.
 ```
 
-Keep the note with the work. Commit reviewed code when you are ready.
+Review the alt text against the figure specification. The plotting CLI does not create it.
 
 ## Use the workflow in your own repository
 
 Choose one small improvement whose result you can inspect.
 
-Give the agent context. Verify its work. Leave the next person a clear starting point.
+Share code, images, and tests the agent may use. Include accessibility in every figure review. Keep study data and logs in their approved environment.
 
 [Fritsche Lab](https://fritschelab.org/) · [Part 1](https://fritschelab.org/practical-genai-coding-guide/) · [Part 2](https://fritschelab.org/practical-genai-agentic-coding-guide/)

@@ -1,18 +1,25 @@
 ---
 layout: default
-title: Maintain data dictionaries
+title: Describe plotting values
 parent: Repository practices
 nav_order: 5
 ---
 
-# Maintain data dictionaries
+# Describe the values a figure uses
 
-A data dictionary helps a collaborator understand a table without tracing the code that produced it. For each column, explain its type, units, possible missing values, allowed categories, and how it was derived.
+A figure contract records its categories, values, units, order, and permitted calculations. A collaborator can understand the figure without opening a dataset.
 
-Small details matter. Read identifiers as strings so leading zeros survive, and say which date an age refers to. In this example, the demographic `age` is age on December 31, 2019; it can differ from age at the selected measurement.
+The workshop uses these fixed invented category totals:
 
-The R simulator generates the input dictionaries, and both pipeline implementations write a dictionary for the cleaned output. The [data contract](../reference/io_contract.md) explains rules that span columns or rows, such as unique identifiers and the choice of a representative measurement.
+| Category, in display order | Group A | Group B |
+| --- | ---: | ---: |
+| Complete measurements | 42 | 64 |
+| Missing height only | 31 | 18 |
+| Missing weight only | 18 | 12 |
+| Missing height and weight | 9 | 6 |
 
-When you change a column, update its contract, the code that generates its dictionary, affected tests, and any downstream code that reads it. Compare the written TSV with the dictionary to check that they agree. If a unit or scientific threshold is unclear, resolve its meaning with the person responsible for the analysis before encoding an assumption.
+Each group totals 100; together they total 200. These invented counts live in the source. The [plotting contract](../reference/io_contract.md) and tests protect their labels, group assignments, values, and order. The [figure specifications](../reference/figure-specifications.md) define the presentation to repair.
 
-The [contract template](../templates/data-contract.md) gives you a starting point for a new dataset or an extension to this example.
+For another project, agree on the figure's meaning with the analyst and check the source and assertions. Keep study calculations and validation in the approved analysis environment; review what may be shared with an agent.
+
+Start with the [contract template](../templates/data-contract.md).

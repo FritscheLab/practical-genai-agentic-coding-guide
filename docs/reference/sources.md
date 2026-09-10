@@ -42,6 +42,8 @@ A feature described in documentation still needs a hands-on check in the client 
 | [Approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security) | Sandbox, approvals, external tools, and hosted execution |
 | [Plugin packaging](https://developers.openai.com/plugins/build/plugins) | Distributing reusable workflows and connections |
 
+The [optional R refactoring walkthrough](../platforms/r-refactoring.md) has a narrower **September 10, 2026** documentation review: [Build skills](https://learn.chatgpt.com/docs/build-skills) supports the skill metadata, repository discovery, and explicit or description-based selection; [Custom agents](https://learn.chatgpt.com/docs/agent-configuration/subagents) supports the standalone TOML fields, inherited session settings, and delegation checks. Its formatting examples adapt Part 1's [R formatting conventions](https://fritschelab.org/practical-genai-coding-guide/docs/templates/R_CodeRefactoringPromptExample.html). These local examples require no Part 1 checkout. Documented discovery remains a separate check from observing it in a particular client.
+
 ## Claude Code
 
 | Source | Used for |

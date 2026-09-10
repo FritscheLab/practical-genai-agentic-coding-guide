@@ -8,11 +8,11 @@ description: Help Claude Code read the shared project instructions, then try an 
 
 # Claude Code
 
-The example repository already includes a `CLAUDE.md` file that points Claude Code to the shared project instructions. You can start the lessons with that setup; the review skill and separate reviewer below are optional.
+The included `CLAUDE.md` points to the shared project instructions. Start there; the skill and separate reviewer below are optional.
 
 **Documentation reviewed: September 5, 2026.** If you need to install or sign in, follow the official [Claude Code quickstart](https://code.claude.com/docs/en/quickstart) for your operating system.
 
-For U-M work, check the [Claude Code via U-M GPT Toolkit route](https://its.umich.edu/computing/ai/claude-code-gpt-toolkit), which explicitly excludes ePHI. Eligibility wording differs between that service page and the [ITS FAQ](https://its.umich.edu/computing/ai/faq), including student access. Confirm your eligibility through the Toolkit portal or ITS support, then follow the portal's configuration instructions if that is your approved route. The [lab data guidance](../reference/lab-data-policy.md) explains why service access and data approval need separate checks.
+For U-M work, the [Toolkit route](https://its.umich.edu/computing/ai/claude-code-gpt-toolkit) excludes ePHI. Its eligibility wording differs from the [ITS FAQ](https://its.umich.edu/computing/ai/faq), including student access; confirm through the portal or ITS. Follow its configuration instructions and the [lab data guidance](../reference/lab-data-policy.md).
 
 ## First session
 
@@ -26,49 +26,49 @@ Claude Code looks for project instructions in `CLAUDE.md` or `.claude/CLAUDE.md`
 @AGENTS.md
 ```
 
-If you bring this pattern to another repository, put that line in its root `CLAUDE.md`, outside a code fence. In the next session, check that Claude loaded the imported instructions as well as `CLAUDE.md` itself.
+In another repository, put that import in root `CLAUDE.md`, outside a code fence. Check that the next session loads both files.
 
-For your setup note, open `/status` and inspect **Setting sources**. Shared project settings can live in `.claude/settings.json`; personal settings use `~/.claude/settings.json`, and `.claude/settings.local.json` holds local project overrides. This lesson can use the defaults without creating a project settings file. Record which sources actually loaded. [Claude settings and inspection](https://code.claude.com/docs/en/settings#confirm-what-loaded).
+Use `/status` → **Setting sources** to check what loaded: shared `.claude/settings.json`, personal `~/.claude/settings.json`, or project-local `.claude/settings.local.json`. This lesson needs no new settings file. [Claude settings and inspection](https://code.claude.com/docs/en/settings#confirm-what-loaded).
 
 ## Choose and record the model
 
-Open `/model` to see your available choices. In the current CLI picker, `s` changes the model for this session; `Enter` saves it as your default too. For a separate trial, launch `claude --model MODEL_ID`, replacing `MODEL_ID` with a supported identifier. Check `/status` after selection. This changes the model within Claude Code, so the project still uses `CLAUDE.md` and Claude's tool controls. [Claude model selection](https://code.claude.com/docs/en/model-config).
+Use `/model`: `s` changes this session; `Enter` also saves the default. Or launch `claude --model MODEL_ID` with a supported identifier. Check `/status` afterward. [Claude model selection](https://code.claude.com/docs/en/model-config).
 
-Aliases such as `opus`, `sonnet`, and `haiku` can resolve to different versions over time and across providers. `opusplan` requests Opus for planning and Sonnet for implementation, subject to availability and policy. Record both the configured choice and the model reported in each phase, including any fallback. If the exact version is not exposed, say so. Record the selected `/effort` level where supported too. [Aliases, routing, and effort](https://code.claude.com/docs/en/model-config).
+Aliases such as `opus`, `sonnet`, and `haiku` vary over time and by provider. `opusplan` uses Opus for planning and Sonnet for implementation where allowed. Record the reported models, fallbacks, and `/effort`; say when the exact version is unavailable. [Aliases, routing, and effort](https://code.claude.com/docs/en/model-config).
 
-Changing the endpoint changes where requests go. If your lab uses a gateway, follow its connection instructions and confirm its model identifiers and supported features. Anthropic's gateway documentation supports routing to Claude models; it does not support substituting arbitrary non-Claude models. A colleague using another model family may need a different client and configuration. [Claude gateway setup and compatibility](https://code.claude.com/docs/en/llm-gateway).
+For a lab gateway, follow its connection instructions and verify model identifiers and features. Anthropic documents routing to Claude models, not arbitrary non-Claude models. [Claude gateway setup and compatibility](https://code.claude.com/docs/en/llm-gateway).
 
 ## Discuss the plan before starting edits
 
-In the terminal, `/plan` starts a planning request and `Shift+Tab` cycles permission modes. Plan mode can read files, run exploration commands, and write a plan. Under ordinary settings, source edits wait for plan approval; sessions launched with bypass permissions available have different restrictions. Check the displayed mode when returning to an existing session. [Claude Plan mode](https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode).
+Use `/plan` to plan; `Shift+Tab` cycles permission modes. Plan mode can read, explore, and write a plan. Source edits ordinarily wait for approval; bypass-enabled sessions differ. Check the displayed mode. [Claude Plan mode](https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode).
 
-Before approving, work through one example together: if the flagged fraction equals the threshold, what should happen? Then select how implementation edits should be approved. Accepting the plan exits Plan mode into that permission mode. Mode names and controls differ across the terminal, editor, and hosted sessions. [Plan approval and interface controls](https://code.claude.com/docs/en/permission-modes).
+Before approving, check the proposed layout changes and tests. Accepting a plan exits Plan mode into the chosen edit-approval mode. Controls differ between terminal, editor, and hosted sessions. [Plan approval and interface controls](https://code.claude.com/docs/en/permission-modes).
 
-Claude’s `Read`, `Edit`, and `Bash` tools serve different purposes. A skill supplies a procedure that uses available tools; it does not automatically grant new access. Permission settings govern approval, and sandbox settings govern what a running command can reach. When Claude reports a passing check, look for the command and result in the transcript. [Claude tools](https://code.claude.com/docs/en/tools-reference), [permissions and isolation](https://code.claude.com/docs/en/permission-modes#common-setups).
+Tools perform actions; skills supply procedures. Permissions govern approval, while sandbox settings limit command access. For a reported passing check, find its command and result in the transcript. [Claude tools](https://code.claude.com/docs/en/tools-reference), [permissions and isolation](https://code.claude.com/docs/en/permission-modes#common-setups).
 
 ## Try the review skill
 
-Copy the [included skill](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) from `.agents/skills/pipeline-review/` to `.claude/skills/pipeline-review/` using the [shared setup instructions](portable-context.md). If this creates your first `.claude/skills/` directory, restart Claude before invoking `/pipeline-review` or asking for a matching task. Check the loaded path. Personal skills live under `~/.claude/skills/`. Claude Code supports the Agent Skills format and adds optional fields of its own; keep those additions separate if you share the skill with colleagues using other clients. [Claude Code skills and change detection](https://code.claude.com/docs/en/skills#live-change-detection).
+Copy the [included skill](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.agents/skills/plot-review/SKILL.md) to `.claude/skills/plot-review/` using the [shared instructions](portable-context.md). Restart after creating your first skills directory, invoke `/plot-review`, and check the loaded path. Personal skills use `~/.claude/skills/`. Keep Claude-specific optional fields separate when sharing across clients. [Claude Code skills and change detection](https://code.claude.com/docs/en/skills#live-change-detection).
 
 ## Create a reviewer agent
 
-A separate reviewer can be helpful once you have a change ready to discuss. To try one, save the following as `.claude/agents/pipeline-reviewer.md`. Its `tools` list allows reading and searching, so the reviewer can inspect the work without editing it. For a personal role used across projects, the same format can live under `~/.claude/agents/`. [Claude subagent configuration](https://code.claude.com/docs/en/sub-agents).
+Save this optional role as `.claude/agents/plot-reviewer.md`, or under `~/.claude/agents/` for personal reuse. Its tools permit reading and searching. [Claude subagent configuration](https://code.claude.com/docs/en/sub-agents).
 
 ```markdown
 ---
-name: pipeline-reviewer
-description: Review synthetic pipeline behavior against its documented contract.
+name: plot-reviewer
+description: Review plotting code and its rendered image against the contract.
 tools: Read, Grep, Glob
 ---
 
-Read AGENTS.md and docs/reference/io_contract.md.
-Inspect the requested code and tests without editing files.
-Report each discrepancy with a file location, a minimal synthetic example,
-and the expected result. State what you could not verify.
+Read AGENTS.md and use .agents/skills/plot-review/SKILL.md.
+Review the requested diff, image, and alt text against the local figure
+specifications. Use supplied test results; do not edit files.
+Report findings with source locations and name any checks you could not perform.
 ```
 
-Ask Claude to delegate the review to `pipeline-reviewer`, then look for that delegation in the transcript. If the role does not appear after you create the first agent directory, restart the session. Include the task’s important constraints in the review request: the reviewer has a separate conversation and may not know what you agreed with the main agent. [Claude subagents](https://code.claude.com/docs/en/sub-agents).
+Ask `Have plot-reviewer review my plotting changes.` Check the transcript for delegation; restart if a newly created agent directory is not detected. Supply the change and test results: the reviewer has its own conversation. [Claude subagents](https://code.claude.com/docs/en/sub-agents).
 
 ## Check findings against the diff and tests
 
-The reviewer above cannot run the pipeline tests because it has no shell tool. Have the implementation session run your path's tests and share the results with it. Then compare its findings with the diff and the example inputs. If you change the role’s access later, check the tool and permission settings too; memory files provide instructions, while those settings control what it can do. [Claude instruction and enforcement distinction](https://code.claude.com/docs/en/memory).
+This role has no shell tool. Have the implementation session run tests and supply pass/fail results; check findings against the diff. If you change its access, inspect effective permissions too. [Claude instruction and enforcement distinction](https://code.claude.com/docs/en/memory).

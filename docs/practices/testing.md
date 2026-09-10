@@ -7,26 +7,54 @@ nav_order: 3
 
 # Test the method
 
-Before asking an agent to change a calculation or selection rule, work through a small example yourself. If a person's valid BMI values are 20, 22, and 24, the median-based rule should select the record with BMI 22. Writing down that answer first gives you something independent of the implementation to test.
+Use three checks: behavior tests protect the [invented values](../lessons/02-specify.md), the figure checker tests journal requirements, and visual review checks readability. None replaces the others.
 
-Then consider where the rule could be misunderstood: a value exactly at the threshold, missing measurements, tied records, or empty input. Include an invalid input that should produce a useful error.
+## Run the checks for your language
 
-The tests check both individual cleaning rules and complete runs through the CLI. Run the commands for your chosen language after its setup. Python:
+After setup, run these commands from the example repository root. Python:
 
 ```bash
-python -m pytest
+python -m unittest discover -s plotting/tests
 ```
 
 R:
 
 ```bash
-Rscript tests/r/run_tests.R
+Rscript plotting/tests/run_tests.R
 ```
 
-For the exclusion-report exercise, inspect the report using the six-row and complete-data examples in [Lesson 2](../lessons/02-specify.md). The expected answers are 3 of 6 excluded (missing height: 2; missing weight: 2) and 0 of 6 excluded. Add focused tests of those counts and verify that the same records are selected and excluded as before.
+Ask the agent about functions and assertions, using test pass/fail results. Keep study files and unrelated logs out of the conversation.
 
-With both environments installed, you can also run `python scripts/py/check_language_parity.py`. It compares parsed outputs and counts across the two baselines; it supplements the independently specified native tests.
+## Check the figure specifications
 
-Choose assertions that would catch a plausible mistake. For example, checking the selected encounter ID catches a wrong record that a “file exists” assertion would miss. A saved output snapshot can help detect formatting changes, but you still need an independently worked answer to check the calculation.
+The fictional **Journal of Unnecessarily Specific Figures (JUSF)** demands purple, lime, typewriter text, and precise dimensions. Read its [figure specifications](../reference/figure-specifications.md) for the complete rules.
 
-After changing behavior, run the relevant tests, the full suite, and the documented CLI command. For a prose-only change, build the site and inspect the changed pages. In your handoff to a collaborator, name the checks you ran and any part you could not verify.
+Run the strict checker for your language against the edited source. Python:
+
+```bash
+python plotting/check_figure.py --output runs/with-fix/summary.png
+```
+
+R:
+
+```bash
+Rscript plotting/check_figure.R --output runs/with-fix/summary.png
+```
+
+The starter passes behavior tests and fails the figure checker: its layout and formatting are unfinished. After repair, both should pass. An environment error is a separate problem.
+
+## Compare the image with the task
+
+Compare the baseline and edited PNGs against the figure specifications. Check separated bars, complete labels, colors, legend, axes, title, and all eight counts. The [plotting contract](../reference/io_contract.md) protects category names, group assignments, values, and order.
+
+## Include accessibility in the review
+
+Inspect the figure at its intended size and in grayscale. Check contrast, black bar outlines, and group names and positions that work without color. The checker cannot establish that every reader can use the result.
+
+Write `runs/with-fix/summary.alt.txt`, or ask the agent for a draft and review it. In no more than 150 words, describe the purpose, groups, all eight counts, and main comparison; identify the totals as invented. This is a separate deliverable: rendering creates only the PNG. Follow the figure specification's full accessibility requirements.
+
+## Choose useful assertions
+
+A PNG-exists test misses changed values. Protect category/group/count combinations and order too. An image hash cannot measure readability; fonts and graphics devices can change image bytes.
+
+Keep the original expectations. Investigate failures in the assertion and function. Report test results, visual observations, and untested work separately.

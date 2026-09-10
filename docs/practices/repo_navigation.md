@@ -7,15 +7,15 @@ nav_order: 2
 
 # Navigate the repository
 
-In the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example), start with `README.md` for the purpose and setup, `AGENTS.md` for working conventions, and `REPO_MAP.md` for the main commands and files. Once you understand the task, use a focused search to find the code and tests you need.
+From the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example) root, read `README.md` for setup, `AGENTS.md` for working conventions, and `REPO_MAP.md` for commands and files. Then search:
 
 ```bash
-rg --files src R scripts/r tests docs
-rg -n 'mismatch_threshold' src R tests docs/reference
+rg --files plotting docs
+rg -n 'plot_summary|Complete measurements' plotting
 ```
 
-Both implementations have separate files for reading inputs, cleaning data, writing reports, and organizing runs: `src/pgacg/` for Python and `R/` for R. For example, a search for `mismatch_threshold` shows where the CLI accepts the value, where cleaning uses it, and which tests check it. Following that path helps you see the effect of a change before editing.
+Choose `plotting/plot_summary.py` or `plotting/plot_summary.R`. Trace argument handling into `plot_summary(output_path)`. Python builds the layout in `make_summary_figure()`; R draws inside `plot_summary()`. Read the constants, layout settings, and tests alongside the [plotting contract](../reference/io_contract.md).
 
-Read the relevant tests alongside the [data contract](../reference/io_contract.md). The tests show what is checked; the contract explains what should happen. If they disagree, discuss the intended behavior with your collaborator and update the appropriate code, test, or explanation.
+The source and invented aggregate chart give the agent enough context for a layout discussion. No input dataset is needed.
 
-When you move a main command or file, update `REPO_MAP.md` so the next person can find it.
+Resolve disagreements between code and tests before editing either. Update `REPO_MAP.md` when moving files or commands.

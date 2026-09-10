@@ -1,49 +1,30 @@
 ---
 layout: default
-title: Logging and runs
+title: Record plot runs
 parent: Repository practices
 nav_order: 4
 ---
 
-# Logging and runs
+# Keep enough evidence to repeat the result
 
-Each run gets its own `runs/<run_id>/` directory, making it easier to compare results after a change. The default ID combines a UTC timestamp with four random characters, for example `20260905_173000_a1b2`. Use `--runs_dir` to choose another parent directory or `--run_id` to provide your own name. The [data contract](../reference/io_contract.md) lists the allowed characters. Existing directories, including failed runs, are preserved.
+For this exercise, keep the baseline and edited plots in separate directories:
 
-## What to read after a run
+| File | Purpose |
+| --- | --- |
+| `runs/baseline/summary.png` | The original plot, including overlapping bars and clipped labels |
+| `runs/with-fix/summary.png` | The plot rendered from your edited source |
+| `runs/with-fix/summary.alt.txt` | The separately written and reviewed alternative text, no more than 150 words |
 
-- `logs/pipeline.log`: progress and diagnostic details for this run. The console also shows progress; add `--verbose` to see debug details there.
-- `outputs/`: cleaned person-level data, flagged rows, flagged people, and the cleaned data dictionary.
-- `summary.md`: human-readable status, inputs, parameters, counts, and category distributions; failed runs explain the error.
-- `manifest.json`: the command, inputs, parameters, environment, and checksums, saved in a form that a script can read.
+Use the commands in your [language path](../quickstart.md). Give each attempt a new output path. Keep generated plots under ignored `runs/` and source edits in Git.
 
-Start with `summary.md`. If a run fails, it explains the error and points you to the log for details. Input or processing errors after a run starts return exit code 1 and save the summary, log, and manifest if the directory is writable. Invalid arguments or a problem creating the run directory return exit code 2 before a run exists. A manifest marked `failed` or `running` records work that has not completed successfully.
+## Record the commands and results
 
-Read these files before sharing them. The manifest records full input paths and the working directory, and errors can include details from the input. This pipeline does not redact them. Its “cleaned” files also retain identifying columns from the synthetic inputs. Keep the exercise synthetic; in a real study, outputs and logs belong in the approved environment until their release has been checked. See [lab data and university policy](../reference/lab-data-policy.md).
+Record the source file, output paths, rendering command, behavior tests, figure checker, and actual outcomes. Add visual observations: separated bars, readable labels, and unchanged counts and order.
 
-## Manifest schema (version 1)
+Include the alt-text path, contrast, group identification, and grayscale review. Write and review alt text separately; plotting commands create only the PNG.
 
-| Field | Meaning |
-|---|---|
-| `schema_version`, `run_id` | Manifest format version and run identifier |
-| `status` | `running`, `success`, or `failed` |
-| `started_at`, `finished_at` | UTC ISO timestamps; finish is null while running |
-| `command` | Command arguments saved as a list, preserving spaces within each argument |
-| `command_source` | `process` for an invoked CLI; `equivalent_module_invocation` for Python's `main(argv)` or `equivalent_script_invocation` for R's `main(args)` |
-| `working_directory` | Directory from which the command was invoked |
-| `parameters` | All effective cleaning parameter values, including defaults |
-| `inputs.ehr`, `inputs.demographics` | Absolute input `path` and file `sha256`; a hash can be null if the input could not be read or processing stopped before hashing it |
-| `code.version`, `code.git.revision`, `code.git.dirty` | Package version, Git commit, and whether the checkout has uncommitted changes |
-| `environment` | Interpreter version, implementation, platform, and dependency versions: Python/pandas/NumPy or R/jsonlite/digest |
-| `metrics` | Cleaning counts when available; included on success |
-| `artifacts` | Paths relative to the run directory, each with `sha256` and `size_bytes` |
-| `error` | Error type and message on failure; null otherwise |
+Render and inspect again after the final source edit. If a check cannot run, record the environment problem and leave its result unverified.
 
-Git fields are `null` when Git or checkout information is unavailable, including a wheel installation. A checkout with no commits may have a null revision and `dirty: true`. If `dirty` is true, the recorded commit does not fully describe the code that ran; keep a copy of those changes with any result you need to reproduce.
+## Share only reviewed evidence
 
-The SHA256 checksums let you compare file contents across runs. They cover `summary.md` and files in `outputs/`, excluding logs and the manifest itself. A checksum is a fingerprint rather than a saved copy, so reproducing a run still requires its input files, source code, and environment specification. Keep inputs unchanged while the pipeline is reading them.
-
-## Comparing runs
-
-When the inputs, parameters, code, and environment match within one language, compare the output TSV hashes in the two manifests. When comparing Python with R, use parsed values: equivalent numbers, dates, and booleans can have different text representations and therefore different hashes. With both environments installed, run `python scripts/py/check_language_parity.py` for that comparison. Run IDs, timestamps, logs, and paths will naturally differ. Record selection breaks ties by latest measurement date and then encounter ID, so the chosen records are independent of input order. The flagged-row file preserves input order within each filtering stage; shuffling the input can therefore change that file's order and hash even when the selected records stay the same.
-
-If the counts differ, use the [data contract](../reference/io_contract.md) to trace which rule or input changed. Remember that a row can carry more than one exclusion reason.
+Give the agent source, approved before/after images, and test results. This workshop uses invented totals. For a study, review code and images before sharing; keep study data and detailed logs in the approved analysis environment. See [lab data guidance](../reference/lab-data-policy.md).

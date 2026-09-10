@@ -8,64 +8,60 @@ description: Make sense of planning, tool use, shared skills, delegation, and lo
 
 # Working with coding agents
 
-Part 1 introduced the habit of giving an assistant a clear task and checking its answer. Here we put those habits to work in a runnable repository: the agent inspects files, edits code, runs tests, and continues from what it finds. We need to follow the result of each step, the decisions still open, and the work we have allowed it to do.
+A coding agent can read, edit, run a check, and act on its result. Your job is to keep the task clear and judge the evidence.
 
-**Documentation reviewed: September 5, 2026.** Current clients offer more ways to plan, share procedures, delegate work, and run tasks away from your laptop. The discussion below connects those documented features to the exclusion-report exercise. It is a guide to trying them, rather than a ranking of tools or a claim about research productivity. Exact controls are on the [client setup pages](index.md).
+**Documentation reviewed: September 5, 2026.** See the [client pages](index.md) for exact controls. The examples below suggest things to try, not a ranking of tools.
 
 ## Ask, plan, or start the work
 
-Early in the exercise, you might ask, “Where do we decide that a measurement is implausible?” A useful answer names the function and follows a record through it. Later, you need to settle how the exclusion report will use the existing flagged records. After those decisions, you can ask the agent to implement and check the change.
+“Which settings clip the labels?” calls for an explanation. “Repair the plot to meet the figure specification” calls for edits and checks.
 
-These are different requests even if you use the same model throughout. Clients often offer **Ask**, **Plan**, and **Agent** modes, or similar controls, to support them. Planning can still involve tools: the agent needs to inspect the code before proposing a useful design. Agent mode usually lets it continue through edits and checks, using the results to decide what to try next. The labels and permitted operations vary by client; check [how to choose a mode](index.md#choose-how-you-want-to-work).
+Clients offer Ask, Plan, and Agent modes, or equivalents. Planning can still use tools to inspect code. Mode names and permitted operations vary; [check your client](index.md#choose-how-you-want-to-work).
 
-Use a separate planning step when a decision could change the method, touch several parts of the project, or be expensive to undo. For this exercise, the plan should settle how to count excluded measurements and explain overlapping reasons. Once that is clear, start the work. Fixing a typo usually needs only a direct request. [Lesson 2](../lessons/02-specify.md#write-the-request) explains when to ask for a plan.
+Plan when a decision could change the method, affect several files, or be costly to undo. For a small, clear repair, make a direct request. The repository instructions and [local specification](../reference/figure-specifications.md) already carry the details.
 
 ## Follow the tools and their results
 
-An agent works through a feedback loop: choose an operation, receive its result, and decide what to do next. A test failure can prompt a code inspection and a correction. A missing dependency can prompt an environment check. The tool result gives you evidence to discuss; the agent's interpretation still needs checking. [Agent feedback loops](https://www.anthropic.com/engineering/building-effective-agents).
+A failed check can lead the agent to inspect code, make a correction, and rerun. Follow that evidence rather than accepting “done.” [Agent feedback loops](https://www.anthropic.com/engineering/building-effective-agents).
 
-In the exclusion-report exercise, watch what happens when one measurement is missing both height and weight. Does the agent examine the failing case and fix the calculation, or quietly change the expected answer? That moment tells you more than a polished completion message. The [tool-use guide](../practices/tool_selection.md) explains how to check the command, its output, and the next action.
+Open the new PNG: passing tests can coexist with unreadable labels. Check accessibility too—contrast, group identification without color, and accurate alternative text. See [tool use](../practices/tool_selection.md) and [testing](../practices/testing.md).
 
 ## Keep useful context with the project
 
-Repository instructions and skills help colleagues share guidance they would otherwise repeat in chat. A skill commonly exposes its description first and loads the longer procedure when relevant. Client support for the shared format has grown, but discovery paths and invocation still differ. Use the [portable review example](portable-context.md) to check what your client actually loads. [Agent Skills specification](https://agentskills.io/specification), [Codex skill discovery](https://developers.openai.com/codex/skills).
+Store recurring instructions in `AGENTS.md` and procedures in skills. Skills usually expose a description first, then load the procedure when relevant. [Check discovery](portable-context.md) in your client. [Agent Skills specification](https://agentskills.io/specification), [Codex discovery](https://developers.openai.com/codex/skills).
 
-Longer sessions also need a way to preserve decisions. Clients may compact a conversation into a summary; some provide persistent memory or delegate work into separate conversations. These are useful forms of context management, with their own limits. [Anthropic's context engineering discussion](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents).
-
-For our exercise, use the six-row specification to check the excluded total and reason counts. A task brief can capture any additional decisions. Record completed checks and unfinished work in the handoff. When a new session starts, ask it to inspect those files and the current code. A future labmate should be able to recover the reasoning from the repository too.
+Long sessions may be summarized or split into separate conversations. Keep decisions in the brief and actual results in the handoff so a fresh session—or labmate—can continue. [Context management](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents).
 
 ## Give another agent a question it can answer
 
-Custom roles and subagents can separate exploration, implementation, and review. Codex, Claude Code, Cursor, and Gemini CLI document subagents with separate conversational context; Copilot's support depends on the client. A named reviewer profile supplies instructions and tools. Delegating to it starts an actual piece of work. [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Claude subagents](https://code.claude.com/docs/en/sub-agents), [Cursor subagents](https://cursor.com/docs/subagents), [Gemini subagents](https://geminicli.com/docs/core/subagents/), [Copilot support matrix](https://docs.github.com/en/copilot/reference/customization-cheat-sheet).
+A named role defines instructions and tools; delegation starts work in a separate conversation. Support differs by client. [Codex](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Claude Code](https://code.claude.com/docs/en/sub-agents), [Cursor](https://cursor.com/docs/subagents), [Gemini CLI](https://geminicli.com/docs/core/subagents/), [Copilot support](https://docs.github.com/en/copilot/reference/customization-cheat-sheet).
 
-Try asking a reviewer whether the report counts each excluded measurement once while the main agent updates the runbook. Give the reviewer the contract, relevant files, and a request for an example with each finding. Decide who may edit which files and who will bring the results together. Parallel work helps when those jobs can proceed separately; it adds coordination when they cannot. Agreement between agents still needs the acceptance cases and your review of the method.
+Try “Have plot-reviewer review my plotting changes.” Give it the diff, image, and check results. Assign separate files if two agents edit in parallel, and decide who combines the work. Verify findings yourself; agreement between agents is not an acceptance test.
 
 ## Move a task to the cloud with its environment
 
-A hosted agent can work in its own development environment and return a branch, diff, and review material. That makes longer tasks possible without keeping the same local session open. Cursor documents cloud machines and review artifacts; Codex describes a separate cloud setup phase before execution. [Cursor Cloud Agents](https://cursor.com/docs/cloud-agent), [Codex cloud execution](https://learn.chatgpt.com/docs/agent-approvals-security).
+Hosted agents can return a branch, diff, and review material from a separate environment. Your local interpreter, skills, and credentials may be absent. [Cursor Cloud Agents](https://cursor.com/docs/cloud-agent), [Codex cloud execution](https://learn.chatgpt.com/docs/agent-approvals-security).
 
-Rehearse the quickstart from a clean environment first. Then give the hosted task the same synthetic inputs, setup commands, and acceptance criteria. State what a finished result should include and where work should stop, such as returning a change for review. Check the service's execution limits and usage before starting a long task. Your local interpreter, personal skills, and credentials may not be present there; inspect the returned evidence before merging.
+Rehearse setup in a clean environment. Supply the same brief and checks, state where work should stop, and inspect returned evidence before merging. Check execution and usage limits before a long task.
 
 ## Connect or automate something you already use
 
-MCP provides a way for clients to reach external tools and context. Plugins can package connections and skills together. These are useful when a colleague wants to share a working procedure, or when a task needs a source outside the repository. Check the receiving client's support and the operations a connection exposes. [MCP introduction](https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro), [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins).
+MCP connects clients to external tools and context; plugins can package connections and skills. Check the operations a connection exposes and the receiving client's support. [MCP introduction](https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro), [Plugin packaging](https://developers.openai.com/plugins/build/plugins).
 
-Hooks take a different role: they run a command at a client event, such as before a tool call or after an edit. Their timing and failure behavior matter. A check that runs after a write has different consequences from a check that can block it. [Claude hooks reference](https://code.claude.com/docs/en/hooks).
+Hooks run at client events, such as before a tool call or after an edit. Timing matters: a check after a write cannot prevent that write. Try both passing and failing cases, and keep required checks in CI too. [Claude hooks](https://code.claude.com/docs/en/hooks).
 
-The local tools are enough for the lessons. If you later add a hook for a familiar check, run it by hand first, then try a passing case and a failure through the hook. Keep required checks in CI as well, since a collaborator may not have your local setup. Read downloaded skill instructions and scripts before installing them. [GitHub skill installation guidance](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills).
+The lessons need only local tools. Read downloaded skill instructions and scripts before installing them. [Skill installation guidance](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills).
 
 ## Compare runs you can explain
 
-If you try a different model, mode, or reviewer setup, repeat a task from the same repository revision with the same expected answers. Record the client and model versions, permissions, where it ran, the corrections you made, time, and any available usage data. Read failed attempts too.
+Change one variable at a time: model, mode, or reviewer. Start from the same revision and task. Record versions, permissions, corrections, time, and available usage data, including failed attempts.
 
-When discussing the result with a colleague, keep these questions separate:
-
-| Question | Useful evidence |
+| Question | Evidence |
 | --- | --- |
-| Does the code implement the agreed contract? | Fixed synthetic cases, boundary cases, and reproducible tests |
-| Did the agent handle the task as requested? | Relevant context, appropriate tool use, honest check reporting, and a reviewable diff |
-| Is the method appropriate for the study? | A reviewed analysis plan and subject-matter review |
+| Does the code meet the contract? | Reproducible tests and image review |
+| Did the agent follow the request? | Tool activity, honest check reporting, reviewable diff |
+| Is the method appropriate for a study? | Analysis plan and subject-matter review |
 
-Gemini CLI's development documentation includes behavioral evaluations of agent workflows, illustrating the second kind of check. Those evaluations do not establish which client works best on the example repository. [Gemini CLI behavioral evaluations](https://geminicli.com/docs/behavioral-evals/).
+Gemini CLI documents behavioral evaluations of agent workflows; these do not rank clients on this exercise. [Behavioral evaluations](https://geminicli.com/docs/behavioral-evals/).
 
-Change one part of the setup at a time so you can discuss what made a difference. The [source index](../reference/sources.md) collects the official documentation to revisit before teaching these features.
+Use the [source index](../reference/sources.md) to revisit documentation before teaching these features.

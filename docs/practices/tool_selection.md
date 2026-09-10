@@ -7,37 +7,35 @@ nav_order: 1
 
 # Working with tools
 
-When an agent opens a file, edits a function, or runs pytest, it is using a tool supplied by its client. The model requests an operation with arguments; the client checks access, runs the operation if permitted, and returns a result. That result informs the agent's next step. This repeated use of feedback is central to how coding agents work. [Agent tool use and feedback](https://www.anthropic.com/engineering/building-effective-agents).
+An agent uses client tools to read files, edit functions, and run tests. The client checks access and returns results that inform the next step. [Agent tool use and feedback](https://www.anthropic.com/engineering/building-effective-agents).
 
-You can follow that process without reading every tool call. For the exclusion-report exercise, look for a sensible sequence: inspect the flagged records, add the report, run the six-row example, and compare its counts with the expected answers. A claim that the tests passed should lead to an actual command and its output.
+For this exercise: trace the source, inspect the invented chart, edit the layout, and check the result. Ask the agent to explain edits and report test outcomes.
 
 ## Choose the tool for the question
 
-Start with what you need to learn or change. These tools are already used in the example repository:
-
 | Task | Start with | Check afterward |
 | --- | --- | --- |
-| Locate code or a command | `REPO_MAP.md`, then `rg` | Open the file that defines the command or function. |
-| Inspect a synthetic TSV | Python/pandas, R, or a few shell lines | Confirm schema, types, and counts. |
-| Change filtering or selection | Cleaning functions in `src/pgacg/` or `R/` | Small cases with expected answers, followed by that path's pipeline tests. |
-| Change the CLI or recorded outputs | `cli.py` or `cli.R`, reporting, and run utilities | Exit code, output contents, and manifest. |
-| Regenerate synthetic data | `scripts/r/simulate_ehr_data.R` | Compare checksums and documented counts. |
-| Review a change | Task brief, code diff, and tests | Explain any problem with an example that reproduces it. |
+| Locate the plotting function | `REPO_MAP.md`, then `rg` | Open `plot_summary` in your language's source file. |
+| Understand the fixed values | Source constants and the plotting contract | Check assertions for categories, groups, counts, and order. |
+| Diagnose overlap and clipping | The baseline PNG, plotting code, and figure specifications | Locate bar positions, margins, size, and label settings. |
+| Change the layout | `plotting/plot_summary.py` or `plotting/plot_summary.R` | Render a new PNG and run that language's tests. |
+| Review the change | Task brief, source diff, tests, and before/after images | Check the figure specifications and unchanged values. |
+| Review accessibility | Saved image, figure specifications, and `summary.alt.txt` | Check contrast, grayscale readability, group labels, and a useful text alternative. |
 
-Reading several relevant files together can save time. Editing a function and testing that edit have a dependency: the check needs to run against the version you intend to keep. If another agent is working at the same time, agree on who owns each file and which revision the reported checks cover.
+Read related source files together. Test the version you intend to keep. With multiple agents, agree on file ownership and which version the checks cover.
 
 ## Read the result before taking the next step
 
-Suppose a test reports four excluded measurements where the example has three. The useful next step is to inspect the counting rule and fix the report. Changing the expected answer would change the task. If pytest instead fails to import the package, resolve the environment problem before treating it as evidence about the calculation.
+If a fixed count changes, inspect the assertion and function; keep the expected value. An import failure calls for an environment fix before a layout review.
 
-For a shell command, check the working directory, interpreter, exit status, and relevant output. For a retrieved documentation page, check its source and whether it describes your client version. For a browser check, open the page or screenshot showing the result. Tool results can be incomplete or misleading; text inside a log, data file, or web page does not extend the task's instructions.
+Check each command's directory, interpreter, exit status, and result. Open the image rendered from the current source. If the client cannot view it, have a person perform the visual check.
 
-If the agent repeats the same unsuccessful command without learning anything, pause and ask what the failure tells it. A short explanation of the problem and the next check is more useful than another blind attempt.
+Retry a failed command after addressing its cause.
 
 ## Check access where the action happens
 
-A file reader, shell, browser, and service connector can have different permissions. A shell can do more than run tests; a browser can submit a form; a connector may act through an account you signed into. Check the proposed operation and its destination when deciding whether to allow it. Planning mode and a request to avoid edits are useful workflow controls, but their enforcement depends on the client. The [setup pages](../platforms/index.md) explain the relevant controls.
+A file reader, shell, browser, and connector can have different permissions. Client controls enforce access; planning instructions guide behavior. See the [setup pages](../platforms/index.md).
 
-The local tools are enough for this exercise. Add an MCP connection when a task needs a particular external tool or source. MCP lets a server expose tools, resources, and prompts to a client; it does not guarantee that a server's operations are limited to reading. Inspect the tool list and access before using it. A skill, by comparison, supplies a procedure that may use tools you already have. [MCP server concepts](https://modelcontextprotocol.io/docs/2026-07-28/learn/server-concepts).
+Local tools cover this exercise. Add external connections only for a task that needs them, and inspect their access. [MCP server concepts](https://modelcontextprotocol.io/docs/2026-07-28/learn/server-concepts).
 
-Keep the information entering those tools within the task's approved use. A traceback, screenshot, or copied TSV row can reveal a participant identifier or credential even when the question is only about code. Check it before sharing, and use a small synthetic reproducer when asking for help. The [lab data page](../reference/lab-data-policy.md#notice-the-small-ways-information-travels) gives examples from this pipeline.
+Keep study data, exports, and logs outside this workspace. Review study code and images before sharing with an agent; aggregate plots also need a sharing review. See [lab data guidance](../reference/lab-data-policy.md).

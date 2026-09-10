@@ -8,7 +8,7 @@ description: Help Gemini CLI find the shared briefing and try an optional review
 
 # Gemini CLI
 
-The repository’s `GEMINI.md` file imports the shared project briefing, so you can begin with that setup. Use the optional skill and reviewer examples later if you want to make review a repeatable part of your work.
+The included `GEMINI.md` imports the shared briefing. Start there; the review skill and separate reviewer below are optional.
 
 **Documentation reviewed: September 5, 2026.** For prerequisites, installation, and sign-in, follow the official [Gemini CLI getting-started guide](https://geminicli.com/docs/get-started/).
 
@@ -18,44 +18,44 @@ The repository’s `GEMINI.md` file imports the shared project briefing, so you 
 2. Open `GEMINI.md` and follow its import of `AGENTS.md`. This is how Gemini reaches the shared briefing.
 3. Run `/memory show`, then send the [orientation prompt](index.md#check-the-agents-understanding). Compare both the loaded context and the answer with the repository files.
 
-Gemini CLI uses `GEMINI.md` as its default project context file; personal defaults live at `~/.gemini/GEMINI.md`. The import below lets that project file refer to the shared briefing. After changing a context file, use `/memory reload` so the session sees the update. [Gemini CLI context and imports](https://geminicli.com/docs/cli/gemini-md/).
+Project context uses `GEMINI.md`; personal defaults use `~/.gemini/GEMINI.md`. The included import connects to the shared briefing. After edits, use `/memory reload`. [Gemini CLI context and imports](https://geminicli.com/docs/cli/gemini-md/).
 
 ```markdown
 @./AGENTS.md
 ```
 
-You can also choose context filenames through `context.fileName` in settings. The example repository already has the import it needs. If you choose the settings approach for another project, check the combined context so you do not load two copies of the same briefing. [Gemini context configuration](https://geminicli.com/docs/cli/gemini-md/).
+Alternatively, set `context.fileName` to choose context filenames. Check the combined context to avoid loading the briefing twice. [Gemini context configuration](https://geminicli.com/docs/cli/gemini-md/).
 
-Use `/settings` to inspect the settings dialog for your setup note. Project settings belong in `.gemini/settings.json`, while personal settings live in `~/.gemini/settings.json`. You can use the defaults for this lesson without creating a project settings file. Record any existing project settings and the choices shown in the session. [Gemini settings](https://geminicli.com/docs/cli/settings/).
+Inspect `/settings`. Project settings use `.gemini/settings.json`; personal settings use `~/.gemini/settings.json`. Record what applies; no new settings file is needed here. [Gemini settings](https://geminicli.com/docs/cli/settings/).
 
 ## Work through the plan together
 
-Use `/plan` for a planning request, or `Shift+Tab` to cycle modes. With the default Plan policy, Gemini can inspect files and write Markdown plans in its designated plans directory; shell commands are outside the allowed tool set. This is a useful place to settle the QC examples. You can edit the proposed plan with `Ctrl+X`. [Gemini Plan Mode](https://geminicli.com/docs/cli/plan-mode/).
+Use `/plan` or cycle modes with `Shift+Tab`. Default Plan policy allows file inspection and Markdown plans in its designated directory, but no shell commands. Edit a proposed plan with `Ctrl+X`. [Gemini Plan Mode](https://geminicli.com/docs/cli/plan-mode/).
 
-When the interactive session presents a plan, approving it starts implementation with your chosen edit-approval setting; rejecting it keeps the discussion in Plan mode. Default and Auto-Edit differ in which writes need confirmation, and policy rules can change tool access. Sandboxing has separate settings for isolating tool execution. [Plan approval](https://geminicli.com/docs/tools/planning/), [tool policies](https://geminicli.com/docs/reference/policy-engine/), [sandboxing](https://geminicli.com/docs/cli/sandbox/).
+Approving a plan starts implementation with your chosen edit-approval setting; rejection stays in Plan mode. Default and Auto-Edit approve writes differently. Policy controls tool access; sandbox settings separately isolate execution. [Plan approval](https://geminicli.com/docs/tools/planning/), [tool policies](https://geminicli.com/docs/reference/policy-engine/), [sandboxing](https://geminicli.com/docs/cli/sandbox/).
 
 Use an interactive session for this exercise: headless runs can approve plans and proceed without routine tool prompts. [Interactive and headless planning](https://geminicli.com/docs/cli/plan-mode/).
 
 ## Choose a model in this client
 
-Run `/model` to open the model dialog. Choose **Manual** to select a specific available model, or **Auto** to let Gemini CLI route requests. You can also select a model at startup with `gemini --model MODEL_ID`, replacing `MODEL_ID` with an available identifier. With Auto, an approved plan can move the main session from a Pro model during planning to a Flash model for implementation. Record that routing choice when comparing results. The main session's `/model` choice does not override subagent models. [Model selection](https://geminicli.com/docs/cli/model/), [planning and model routing](https://geminicli.com/docs/cli/plan-mode/).
+Use `/model`: **Manual** selects a model; **Auto** routes requests. Or launch `gemini --model MODEL_ID`. Auto can switch Pro planning to Flash implementation; record that routing. The main session's selection does not override subagent models. [Model selection](https://geminicli.com/docs/cli/model/), [planning and model routing](https://geminicli.com/docs/cli/plan-mode/).
 
-Changing the Gemini model keeps Gemini CLI's context files, skills, and policy setup in place. Google sign-in, a Gemini API key, and Vertex AI are different ways to connect this client; use the one appropriate to your account and lab environment. A colleague using a Gemini model inside another editor is using that editor's configuration and tool workflow. Compare models within one client first, then revisit the setup if you switch clients. [Gemini CLI authentication options](https://geminicli.com/docs/get-started/authentication/).
+Model changes keep Gemini CLI's context and policy setup. Choose the appropriate connection: Google sign-in, Gemini API key, or Vertex AI. A Gemini model in another editor uses that editor's workflow. [Gemini CLI authentication options](https://geminicli.com/docs/get-started/authentication/).
 
 ## Try the review skill
 
-The [pipeline-review skill](https://github.com/FritscheLab/practical-genai-agentic-coding-example/blob/main/.agents/skills/pipeline-review/SKILL.md) is already in `.agents/skills/pipeline-review/`. Gemini CLI also supports `.gemini/skills/`, with personal locations under `~/.agents/skills/` and `~/.gemini/skills/`. Use the included copy: within the same scope, `.agents/skills/` takes precedence when names conflict. See the [folder map](portable-context.md) when adapting the setup. [Gemini CLI skills](https://geminicli.com/docs/cli/skills/).
+Use the included `.agents/skills/plot-review/`. Gemini also supports `.gemini/skills/`, with personal equivalents under `~/.agents/skills/` and `~/.gemini/skills/`. Within one scope, `.agents/skills/` wins name conflicts. See the [folder map](portable-context.md). [Gemini CLI skills](https://geminicli.com/docs/cli/skills/).
 
-Run `/skills list` to check that Gemini found it, and `/skills reload` after making changes. Then ask for a review using `pipeline-review`. The documented activation flow asks for consent before loading the skill body and allowing reads of its bundled resources. Check the displayed path so you know which copy you are accepting. [Gemini skill activation](https://geminicli.com/docs/cli/skills/).
+Check `/skills list`; use `/skills reload` after edits. Ask for `plot-review`. Activation requests consent to load the body and read bundled resources; check the displayed path. [Gemini skill activation](https://geminicli.com/docs/cli/skills/).
 
 ## Create a reviewer agent
 
-If you want a separate review conversation, save the following as `.gemini/agents/pipeline-reviewer.md`. It uses the documented local-agent format and limits tools to `read_file` and `grep_search`. For a personal role across projects, use `~/.gemini/agents/`. [Gemini CLI subagents](https://geminicli.com/docs/core/subagents/).
+Save this optional role as `.gemini/agents/plot-reviewer.md`, or under `~/.gemini/agents/` for personal reuse. It permits `read_file` and `grep_search`. [Gemini CLI subagents](https://geminicli.com/docs/core/subagents/).
 
 ```markdown
 ---
-name: pipeline-reviewer
-description: Inspect the synthetic pipeline for documented contract violations.
+name: plot-reviewer
+description: Review plotting code and its rendered image against the contract.
 kind: local
 tools:
   - read_file
@@ -63,16 +63,16 @@ tools:
 max_turns: 10
 ---
 
-Read AGENTS.md and docs/reference/io_contract.md.
-Review the requested code and tests without editing files.
-Return findings with file locations, a minimal synthetic example,
-and the expected result. State which checks remain unverified.
+Read AGENTS.md and use .agents/skills/plot-review/SKILL.md.
+Review the requested diff, image, and alt text against the local figure
+specifications. Use supplied test results; do not edit files.
+Report findings with source locations and name any checks you could not perform.
 ```
 
-Run `/agents` to find the role, then start a prompt with `@pipeline-reviewer` to send it a review request. Include the behavior you want checked and the files it should read. Current documentation says subagents are enabled by default; if the role does not appear, check the documentation for your installed version. [Gemini subagent management](https://geminicli.com/docs/core/subagents/).
+Find the role with `/agents`, then start a request with `@plot-reviewer`. Supply the change and test results. Subagents are currently enabled by default; check your version's documentation if it is missing. [Gemini subagent management](https://geminicli.com/docs/core/subagents/).
 
 Leave Plan mode before trying this custom reviewer: its default policy allows the built-in research agents, while additional roles need an explicit policy. [Gemini planning tools and custom agents](https://geminicli.com/docs/cli/plan-mode/).
 
-## Compare the review with actual outputs
+## Compare the review with code and tests
 
-The reviewer above cannot run shell commands, so have the implementation session run the checks and share their results. Compare the final diff, selected records, and flagged-row counts with the lesson’s expected answers. Keep sign-in details and personal overrides outside the repository when sharing your setup.
+This role cannot run shell commands. Supply actual test results, then compare its findings with the diff and image. Perform visual checks yourself if its tools cannot show images.

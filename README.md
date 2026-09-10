@@ -1,23 +1,26 @@
 # Practical GenAI Agentic Coding Guide
 
-**[Read the online guide](https://fritschelab.org/practical-genai-agentic-coding-guide/).** Choose [Python](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/paths/python/) or [R](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/paths/r/), then follow six lessons through one reporting change, verification, review, and a short handoff.
+**[Read the online guide](https://fritschelab.org/practical-genai-agentic-coding-guide/).** Choose [Python](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/paths/python/) or [R](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/paths/r/), then repair a plot with a coding agent in six lessons.
 
 This is Part 2 of the [Practical GenAI series](https://fritschelab.org/practical-genai-coding-guide/), from [Lars G. Fritsche](https://medschool.umich.edu/profile/4980/lars-fritsche) and the [Fritsche Lab](https://fritschelab.org/) at the University of Michigan.
 
 ## Get the exercise
 
-The runnable Python/R pipeline, synthetic data, tests, and agent instructions are in the **[example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example)**. Download only that repository and follow along online. It also includes the language walkthroughs for offline use.
+Download the **[example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example)** for code, invented totals, tests, and offline lessons. Follow the website alongside it.
 
 ```bash
 git clone https://github.com/FritscheLab/practical-genai-agentic-coding-example.git
 cd practical-genai-agentic-coding-example
 ```
 
-Start with its README and your chosen language's setup. You should be comfortable running a Python or R script and using a terminal; the lessons explain the Git steps. The baseline uses synthetic data and needs no model API or credentials. Use an institution-approved coding assistant for the agent exercise.
+Start with its README and language setup. Bring basic Python/R and terminal skills; the lessons explain Git. Plotting needs no model API or credentials. Use an institution-approved coding assistant for the agent exercise.
+
+Include accessibility in every figure: contrast, readable labels, and reviewed alternative text.
 
 ## Explore the guide
 
 - [Agent setup](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/platforms/): configure your coding client and check its access.
+- [Optional R refactoring example](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/platforms/r-refactoring.html): reuse a lab formatting skill or named Codex agent, then verify that results stay the same.
 - [Repository practices](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/practices/): context, testing, logs, and handoffs.
 - [Teaching materials](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/lab_meeting/): a 45-minute workshop and slides.
 - [Lab data guidance](https://fritschelab.org/practical-genai-agentic-coding-guide/docs/reference/lab-data-policy.html): institutional requirements before adapting the workflow to study data.

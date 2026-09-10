@@ -18,16 +18,22 @@ has_toc: false
 </section>
 
 <div class="guide-strip" aria-label="What to expect">
-  <div><strong>Two language paths</strong><span>Choose Python or R for the same synthetic BMI pipeline.</span></div>
+  <div><strong>Two language paths</strong><span>Choose Python or R for the same plotting exercise.</span></div>
   <div><strong>Your choice of agent</strong><span>Use a supported coding tool with the same goals and checks.</span></div>
   <div><strong>Understand what changed</strong><span>Work out the answer, inspect the changes, and check the result.</span></div>
 </div>
 
 ## Pick up where Part 1 leaves off
 
-[Part 1: Practical GenAI Coding Guide](https://fritschelab.org/practical-genai-coding-guide/) takes us through planning, prompting, reviewing, and documenting code, including work with coding agents. Here we put those habits to work in a project with several moving parts: a Python or R pipeline, tests, documentation, and saved results.
+[Part 1](https://fritschelab.org/practical-genai-coding-guide/) introduced planning, prompting, and reviewing code. Here you put those habits to work on a plot with overlapping bars and clipped labels.
 
-Download the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example) and follow this guide online. The example also includes the language walkthroughs for offline use. Choose the language you already use. Each path takes you through its own setup, six lessons, checks, and handoff. Once you start, the commands, prompts, and Next links stay with that language. Both paths teach the same exclusion-report exercise. Along the way, you will give the agent useful context, catch plausible mistakes, and decide when the result is ready to keep.
+Download the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example), choose Python or R, and follow six lessons online or offline. Repair the plot without changing its values, check the agent's work, and leave a result a labmate can rerun.
+
+![Grouped bars compare invented measurement-completeness counts for Groups A and B. Group B has more complete measurements, 64 versus 42; the linked specification lists all category values.](assets/images/plotting-target.png)
+
+Your target: a readable chart for the fictional **Journal of Unnecessarily Specific Figures (JUSF)**. The [exercise](docs/lessons/02-specify.md) shows the problem; its local [figure specifications](docs/reference/figure-specifications.md) give the rules.
+
+Make accessibility part of every figure: readable labels, sufficient contrast, groups identifiable without color, and reviewed alternative text.
 
 If you are new to using GenAI for coding, begin with Part 1. If you can already run a script and inspect a change, [start here]({{ '/docs/quickstart.html' | relative_url }}).
 
@@ -38,10 +44,10 @@ If you are new to using GenAI for coding, begin with Part 1. If you can already 
     <p>Keep the project small so you can see the whole workflow.</p>
   </div>
   <ol class="guide-learning-path">
-    <li><span class="guide-step-number" aria-hidden="true">01</span><div><h3>Establish a working baseline</h3><p>Choose Python or R, run its tests and demo, and inspect a completed run before asking an agent to edit anything.</p><a href="{{ '/docs/quickstart.html' | relative_url }}">Run the quickstart <span aria-hidden="true">→</span></a></div></li>
+    <li><span class="guide-step-number" aria-hidden="true">01</span><div><h3>Establish a working baseline</h3><p>Choose Python or R, run its tests, and open the baseline plot before asking an agent to edit anything.</p><a href="{{ '/docs/quickstart.html' | relative_url }}">Run the quickstart <span aria-hidden="true">→</span></a></div></li>
     <li><span class="guide-step-number" aria-hidden="true">02</span><div><h3>Make the repository understandable</h3><p>Use a README, agent instructions, a repository map, and data contracts to make expectations explicit.</p><a href="{{ '/docs/practices/' | relative_url }}">Explore repository practices <span aria-hidden="true">→</span></a></div></li>
     <li><span class="guide-step-number" aria-hidden="true">03</span><div><h3>Choose one small improvement</h3><p>Describe the change and how you will check it. Review its plan and the files it changes.</p><a href="{{ '/docs/lessons/' | relative_url }}">Work through the lessons <span aria-hidden="true">→</span></a></div></li>
-    <li><span class="guide-step-number" aria-hidden="true">04</span><div><h3>Leave a useful result</h3><p>Run the checks, inspect the outputs, and leave enough detail for a labmate to rerun the work.</p><a href="{{ '/docs/reference/' | relative_url }}">Read the pipeline reference <span aria-hidden="true">→</span></a></div></li>
+    <li><span class="guide-step-number" aria-hidden="true">04</span><div><h3>Leave a useful result</h3><p>Run the checks, compare the plots, and leave enough detail for a labmate to rerun the work.</p><a href="{{ '/docs/reference/' | relative_url }}">Read the exercise reference <span aria-hidden="true">→</span></a></div></li>
   </ol>
 </section>
 
@@ -59,6 +65,6 @@ If you are new to using GenAI for coding, begin with Part 1. If you can already 
 
 <aside class="guide-note" aria-labelledby="demo-heading">
   <h2 id="demo-heading">A teaching project you can inspect</h2>
-  <p>The example data are synthetic. The pipeline cleans measurements, flags quality issues, and summarizes one row per person. You can inspect the whole example and work out what its rules should do. For a study of your own, start by agreeing on the scientific method with your collaborators.</p>
-  <p><a href="https://github.com/FritscheLab/practical-genai-agentic-coding-example">Get the code and example data on GitHub</a>.</p>
+  <p>The counts are invented and embedded in code. The agent works with source, tests, and images; no participant records are needed.</p>
+  <p><a href="https://github.com/FritscheLab/practical-genai-agentic-coding-example">Get the exercise on GitHub</a>.</p>
 </aside>

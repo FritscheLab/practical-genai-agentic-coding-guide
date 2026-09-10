@@ -6,11 +6,11 @@ search_exclude: true
 has_toc: false
 ---
 
-# Get to know the project and your agent
+# Find the plotting function
 
-Continue this lesson in your language path. Its commands, prompts, and Next links stay with that language.
+Locate the code behind the overlapping bars and clipped labels. Choose your path:
 
-- [Continue with Python](../paths/python/01-orient.md)
-- [Continue with R](../paths/r/01-orient.md)
+- [Python](../paths/python/01-orient.md)
+- [R](../paths/r/01-orient.md)
 
-Starting the guide? [Choose a path and run its setup](../quickstart.md).
+Need the starting chart? [Run setup first](../quickstart.md).
