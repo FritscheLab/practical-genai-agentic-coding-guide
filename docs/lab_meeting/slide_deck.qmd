@@ -1,0 +1,147 @@
+---
+title: "From a task to a reproducible repository"
+subtitle: "Practical GenAI · Part 2 · Fritsche Lab"
+author: "Lars G. Fritsche · University of Michigan"
+format:
+  revealjs:
+    theme: [default, lab_theme.scss]
+    slide-number: c/t
+    transition: fade
+    center: false
+    code-copy: true
+    footer: "Fritsche Lab · Practical GenAI · Part 2"
+    width: 1366
+    height: 768
+    margin: 0.08
+---
+
+## Build, verify, and maintain with a coding agent
+
+Today we will improve one report in an existing research repository.
+
+1. Understand the code and the request.
+2. Make a focused change with an agent.
+3. Check the output and existing tests.
+4. Review the diff and leave a handoff.
+
+::: {.notes}
+Use docs/lab_meeting/45min_runbook.md. Participants prepare Python or R and an approved client before the presentation. The same short path also works at home. Keep all input and shared screens synthetic.
+:::
+
+## Choose your path once
+
+[Python path](https://ilarsf.github.io/practical-genai-agentic-coding-guide/docs/paths/python/) · [R path](https://ilarsf.github.io/practical-genai-agentic-coding-guide/docs/paths/r/)
+
+Download the [example repository](https://github.com/ilarsf/practical-genai-agentic-coding-example) and keep the guide open online.
+
+Both paths use the same six measurements. Follow your path's commands and prompts.
+
+The pipeline already works. We will add a clearer explanation of its exclusions.
+
+::: {.notes}
+Open the selected path in the guide. Setup, example runs, verification, review, and handoff remain specific to that language. No model API is needed to run the pipeline.
+:::
+
+## Six rows you can explain
+
+| Measurement | Height | Weight | Existing result |
+| --- | ---: | ---: | --- |
+| a | 170 | 70 | Keep |
+| b | 175 | 70 | Keep |
+| c | 180 | 81 | Keep |
+| d | Missing | 70 | Exclude: missing height |
+| e | 170 | Missing | Exclude: missing weight |
+| f | Missing | Missing | Exclude: both |
+
+Each row belongs to a different synthetic person. Dates and BMI values are valid.
+
+## What does a labmate want to know?
+
+**“Why did six input measurements become three?”**
+
+The excluded rows are saved in `outputs/flagged_rows.tsv`.
+The summary gives technical totals, but does not explain the reasons.
+
+Open both files before asking for a change.
+
+## Ask the agent to find its way
+
+```text
+Read AGENTS.md and REPO_MAP.md. Find the code that writes
+summary.md and explain where the excluded rows are available.
+Do not edit anything yet. Point to the files you used.
+```
+
+Open the files it names. Check its explanation against the six rows.
+
+::: {.notes}
+Use the language-specific orientation prompt if preferred. Show the loaded project instructions and effective tool permissions. A confident explanation still needs a check against the files.
+:::
+
+## The report we want
+
+```text
+3 of 6 input measurements were excluded.
+
+Missing height: 2
+Missing weight: 2
+
+Reason counts overlap: one measurement can have both reasons.
+```
+
+Why do the reasons add up to four while only three measurements were excluded?
+
+## Give the agent one focused change
+
+Use the implementation prompt in your path.
+
+- Add the readable report using existing exclusion decisions.
+- Keep cleaning and data selection the same.
+- Run the existing tests and explain the changed files.
+
+Ask for a short plan if the approach is unclear. Then let the agent edit and run commands.
+
+::: {.notes}
+The goal is a request learners can understand and check. No new quality threshold, CLI option, or special run status is needed. Discuss new scope before accepting it.
+:::
+
+## Verify the result
+
+Run the six-row example again. Read the new summary.
+
+- Three excluded measurements; reason counts two and two.
+- Complete-data example: six measurements, no exclusions.
+- Existing tests still pass.
+- Selected and excluded records stay the same.
+
+Tests and direct inspection answer different questions. Use both.
+
+## Review what changed
+
+```bash
+git status --short
+git diff
+```
+
+Open new files too. Can you explain each change?
+
+A second agent can help review. Check its findings against the code and examples.
+
+## Leave a useful handoff
+
+Ask the agent for a short note:
+
+```text
+Summarize what changed, the commands and results we checked,
+and anything still unfinished. Include how to rerun the example.
+```
+
+Keep the note with the work. Commit reviewed code when you are ready.
+
+## Use the workflow in your own repository
+
+Choose one small improvement whose result you can inspect.
+
+Give the agent context. Verify its work. Leave the next person a clear starting point.
+
+[Fritsche Lab](https://fritschelab.org/) · [Part 1](https://fritschelab.org/practical-genai-coding-guide/) · [Part 2](https://ilarsf.github.io/practical-genai-agentic-coding-guide/)

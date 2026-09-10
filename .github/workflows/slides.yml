@@ -1,0 +1,22 @@
+name: Workshop slides
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.8.26"
+      - name: Render workshop slides
+        run: quarto render docs/lab_meeting/slide_deck.qmd

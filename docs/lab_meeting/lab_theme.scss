@@ -1,0 +1,101 @@
+/*-- scss:defaults --*/
+$body-bg: #f3f6f8;
+$body-color: #00274c;
+$link-color: #0f766e;
+$presentation-heading-color: #00274c;
+$font-family-sans-serif: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+$presentation-font-size-root: 34px;
+$presentation-line-height: 1.28;
+$code-block-font-size: 0.7em;
+
+/*-- scss:rules --*/
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h1,
+.reveal h2 {
+  font-weight: 760;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.reveal h2 {
+  border-bottom: 3px solid #ffcb05;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.55em;
+}
+
+.reveal .slide-number {
+  font-size: 0.45em;
+  color: #334e68;
+}
+
+.reveal .footer {
+  color: #486581;
+}
+
+.reveal ul,
+.reveal ol {
+  margin-top: 0.35em;
+}
+
+.reveal li {
+  margin-bottom: 0.25em;
+}
+
+.reveal .title-slide h2,
+.reveal .title-slide h1 {
+  border-bottom: 0;
+  margin-bottom: 0.2em;
+  font-size: 1.55em;
+}
+
+.reveal .subtitle {
+  font-size: 0.86em;
+  color: #0f766e;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-weight: 680;
+  margin-bottom: 0.9em;
+}
+
+.reveal .panel {
+  background: linear-gradient(135deg, #e6fffb 0%, #edf2f7 100%);
+  border: 1px solid #9de3d6;
+  border-left: 9px solid #0f766e;
+  border-radius: 14px;
+  padding: 0.62em 0.85em;
+  margin: 0.55em 0 0.8em;
+  font-size: 0.95em;
+  font-weight: 620;
+}
+
+.reveal pre code {
+  border-radius: 12px;
+  border: 1px solid #1f2937;
+  background: #0b1220;
+  color: #d1f7ff;
+  padding: 0.75em;
+}
+
+.reveal code {
+  color: #00274c;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 0.1em 0.18em;
+  border-radius: 0.22em;
+}
+
+.reveal .progress {
+  color: #0f766e;
+  height: 6px;
+}
+
+.reveal section {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(56, 189, 171, 0.08), transparent 32%),
+    radial-gradient(circle at 90% 90%, rgba(15, 118, 110, 0.1), transparent 30%);
+  border-radius: 16px;
+  box-shadow: 0 18px 42px rgba(16, 42, 67, 0.08);
+  padding: 0.15em 0.2em;
+}
