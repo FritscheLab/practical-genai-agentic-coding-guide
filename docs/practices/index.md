@@ -13,6 +13,7 @@ Find the plotting code, check the figure and its values, and leave enough eviden
 
 Include accessibility in the task and review: readable text, contrast, meaningful labels, and a text alternative.
 
+- [Keep control of the agent](../reference/agent-control.md): permissions, sandboxing, and independent coding skills.
 - [Work with tools](tool_selection.md) for inspection, edits, and checks.
 - [Navigate the repository](repo_navigation.md) using entrypoints and focused searches.
 - [Test the method](testing.md) with independent expectations and integration checks.

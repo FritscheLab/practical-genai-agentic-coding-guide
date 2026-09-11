@@ -14,6 +14,20 @@ The included `CLAUDE.md` points to the shared project instructions. Start there;
 
 For U-M work, the [Toolkit route](https://its.umich.edu/computing/ai/claude-code-gpt-toolkit) excludes ePHI. Its eligibility wording differs from the [ITS FAQ](https://its.umich.edu/computing/ai/faq), including student access; confirm through the portal or ITS. Follow its configuration instructions and the [lab data guidance](../reference/lab-data-policy.md).
 
+## Use the VS Code extension
+
+*Extension setup and mode controls reviewed September 11, 2026; the optional CLI and customization material below keeps its earlier review date.*
+
+If you prefer Claude Code, keep the same cloned exercise, Python/R environment, Explorer, and Source Control workflow. In **Extensions**, search for **Claude Code** and install Anthropic's extension. Open its Spark icon or use the Command Palette's **Claude Code: Open in New Tab**, then follow browser sign-in. The extension includes its runtime; a separate CLI installation is unnecessary. Use an eligible Claude subscription, Console account, or your institution's supported provider route. [Claude Code extension setup](https://code.claude.com/docs/en/vs-code)
+
+Click the mode indicator below Claude's prompt box and choose **Plan** for orientation and the repair proposal. Reuse the lesson prompts, including the instruction not to edit during orientation. Review the plan, then choose the acceptance option for **manually approving edits** so implementation starts in **Manual** mode. Accepting a plan starts implementation; select manual approval at that decision, before editing begins. These are Claude permission modes; they are separate from Copilot's **Ask/Plan/Agent** roles. [Claude plan approval](https://code.claude.com/docs/en/permission-modes#review-and-approve-a-plan)
+
+Have Claude run setup and verification checks and expand their results. Open the PNGs and alt text in Explorer, then inspect every diff, stage reviewed source, and commit through VS Code **Source Control** just as the lessons describe. Claude's proposed-edit view complements that final Git review. [Extension edit review](https://code.claude.com/docs/en/vs-code#review-changes)
+
+## Optional terminal and customization reference
+
+The sections below describe the terminal-oriented workflow and reusable reviewer tools. They are not prerequisites for the VS Code extension path. Use the [CLI appendix](../appendix/command-line.md) for the exercise's terminal setup and checks.
+
 ## First session
 
 1. Complete the [setup for your language path](../quickstart.md), then start an interactive terminal session with `claude --permission-mode plan` from the example repository root. This gives you time to discuss the project before implementing a change. [Claude permission modes](https://code.claude.com/docs/en/permission-modes).

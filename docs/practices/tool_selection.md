@@ -36,6 +36,8 @@ Retry a failed command after addressing its cause.
 
 A file reader, shell, browser, and connector can have different permissions. Client controls enforce access; planning instructions guide behavior. See the [setup pages](../platforms/index.md).
 
+Read [permissions, sandboxing, and independent work](../reference/agent-control.md) before granting access. Practise declining a request you cannot explain. A sandbox limits covered actions, while meaningful approvals and independent review remain necessary. Keep some agent-free coding practice so that convenience does not become a requirement for doing your work.
+
 Local tools cover this exercise. Add external connections only for a task that needs them, and inspect their access. [MCP server concepts](https://modelcontextprotocol.io/docs/2026-07-28/learn/server-concepts).
 
 Keep study data, exports, and logs outside this workspace. Review study code and images before sharing with an agent; aggregate plots also need a sharing review. See [lab data guidance](../reference/lab-data-policy.md).

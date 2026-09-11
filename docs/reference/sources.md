@@ -46,6 +46,10 @@ The [optional R refactoring walkthrough](../platforms/r-refactoring.md) has a na
 
 ## Claude Code
 
+**Additional sandbox review: September 11, 2026.** [Claude sandbox scope](https://code.claude.com/docs/en/sandboxing#scope) distinguishes Bash subprocess restrictions from built-in file and computer-use tools. Copilot's terminal sandbox control does not configure Anthropic's native extension. Learners should actively select their intended mode in the [Claude prompt box](https://code.claude.com/docs/en/vs-code#use-the-prompt-box); do not infer it from sign-in. These controls were not tested in the Claude UI.
+
+**Scoped review: September 11, 2026** for the [native VS Code extension](https://code.claude.com/docs/en/vs-code): installation, browser sign-in, bundled runtime, and edit review; the [VS Code permission-mode section](https://code.claude.com/docs/en/permission-modes#switch-permission-modes) supports the Plan/Manual controls in the short alternative path. CLI and customization material below retains its September 5 review date. Extension sign-in and mode transitions were not tested through the UI in this review.
+
 | Source | Used for |
 | --- | --- |
 | [Quickstart](https://code.claude.com/docs/en/quickstart) | Installation, authentication, and first session |
@@ -61,9 +65,30 @@ The [optional R refactoring walkthrough](../platforms/r-refactoring.md) has a na
 
 ## GitHub Copilot
 
+**Additional permission/sandbox review: September 11, 2026.** The shared [permissions and independent-work guide](agent-control.md) uses the current [approval controls](https://code.visualstudio.com/docs/agents/run/approvals), [trust and safety concepts](https://code.visualstudio.com/docs/agents/concepts/trust-and-safety), and [security guidance](https://code.visualstudio.com/docs/agents/run/security). These support approval fatigue, saved-approval scope, terminal-only sandbox coverage, its preview/off-by-default status and documented macOS/Linux/WSL2 support, and separate approval handling for sandboxed commands. Current docs use Manual, Assisted, and Allow all; existing screenshots retain their observed Default permissions label. Sandbox activation, approval reset, and exception handling were not tested through the UI. Independent-work and proportionality advice is teaching guidance, not a clinical assessment or a claim about any country's laws.
+
+**Scoped review: September 11, 2026** for the VS Code default workflow, current Student/Free account and Auto-model guidance, Chat targets/roles, approvals, models, and visual Git review. The CLI and optional customization references retain the September 5 review date. The planning URL was unavailable during the later review; plan handoff is supported by the session-target reference.
+
+**Hands-on evidence, September 11, 2026:** in VS Code 1.137.0 on macOS 26.6.2, an authenticated Local session answered an Ask request, returned a Plan with an implementation handoff, and used Agent to run the Python behavior tests, render the flawed baseline, and verify a repaired figure. Source Control displayed real edits, staged the reviewed plotting source, and made a local commit in a disposable exercise copy. The captured client calls its approval control **Default permissions**; the documentation calls it **Manual permissions**. Windows installation and UI steps, student verification, and the Claude Code extension were not tested through their interfaces. Separate Python and R learner trials exercised the CLI appendix, including baseline rejection, repair verification, image/alt-text review, and local commits; those shell trials do not validate IDE controls.
+
+| Interface step | macOS evidence | Windows evidence |
+| --- | --- | --- |
+| Install VS Code, Git, and a language runtime | Existing installations used; installers untested | Untested |
+| Clone and trust a repository | Clone URL picker and opened exercise tested; complete network-clone and Trust-dialog flow untested | Untested |
+| Select Python environment | Microsoft Python extension installed; workspace `.venv` selected | Untested |
+| Use Copilot Chat | Authenticated Local Ask, Plan, and Agent tested, including command approval and expanded results | Untested |
+| Compare files and plots | Explorer split PNG view and actual Python/R side-by-side diffs tested; inline-switch UI untested | Untested |
+| Stage and commit | Source-only staging and local commit tested; identity-remedy prompt untested | Untested |
+
+The screenshots show disposable public exercise copies. Repairs used for the diff and comparison illustrations came from the separate learner trials; the screenshots do not establish that Copilot authored those repairs. Physical print-size review and attaching alt text in a destination document remain untested.
+
 | Source | Used for |
 | --- | --- |
-| [CLI quickstart](https://docs.github.com/en/copilot/get-started/cli-quickstart) | Current CLI setup |
+| [GitHub Copilot plans](https://docs.github.com/en/copilot/get-started/plans) | Copilot Student eligibility, Free/Student Auto selection, and current allowances |
+| [VS Code Chat view](https://code.visualstudio.com/docs/agents/run/chat-view) | Opening Chat and distinguishing the four input controls |
+| [VS Code Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview) | Git integration and the repository workflow |
+| [Staging, commits, and diffs](https://code.visualstudio.com/docs/sourcecontrol/staging-commits) | Changed-file badges, diff layouts, staging, and local commits |
+| [CLI quickstart](https://docs.github.com/en/copilot/get-started/cli-quickstart) | Optional CLI appendix setup |
 | [CLI command reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference) | CLI planning and permission commands |
 | [CLI configuration directories](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-config-dir-reference) | Current project and personal settings files |
 | [VS Code session targets and roles](https://code.visualstudio.com/docs/agents/run/agent-harnesses) | Local Ask/Plan/Agent roles, execution locations, and handoffs |

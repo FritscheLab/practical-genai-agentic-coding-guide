@@ -9,7 +9,7 @@ has_toc: false
 <section class="guide-hero" aria-labelledby="guide-title">
   <p class="guide-eyebrow">Practical GenAI · Part 2</p>
   <h1 id="guide-title">Build research code<br>you can explain.</h1>
-  <p class="guide-lead">Work through a small project with a coding agent, learn how to check its work, and leave the next person a project they can pick up.</p>
+  <p class="guide-lead">Repair a Python or R plot in VS Code with GitHub Copilot. Ask about the code, review a plan, and inspect every change before saving it in Git.</p>
   <div class="guide-actions">
     <a class="btn btn-primary" href="{{ '/docs/paths/python/' | relative_url }}">Start with Python <span aria-hidden="true">→</span></a>
     <a class="btn btn-primary" href="{{ '/docs/paths/r/' | relative_url }}">Start with R <span aria-hidden="true">→</span></a>
@@ -19,15 +19,21 @@ has_toc: false
 
 <div class="guide-strip" aria-label="What to expect">
   <div><strong>Two language paths</strong><span>Choose Python or R for the same plotting exercise.</span></div>
-  <div><strong>Your choice of agent</strong><span>Use a supported coding tool with the same goals and checks.</span></div>
-  <div><strong>Understand what changed</strong><span>Work out the answer, inspect the changes, and check the result.</span></div>
+  <div><strong>Work in VS Code</strong><span>Use Copilot Chat to run code and Explorer to open plots.</span></div>
+  <div><strong>See what changed</strong><span>Review changed files and color-coded diffs in Source Control.</span></div>
 </div>
+
+**Practising what we teach:** this guide and exercise were developed with substantial AI assistance in writing, coding, testing, and review. They are provided **as is, without warranty**, to the extent permitted by applicable law. Review the code, agent instructions, permissions, and results before use. Read the [AI-assistance disclosure, use guidance, and warranty notice](docs/reference/agent-control.md#about-ai-assistance-in-this-guide).
 
 ## Pick up where Part 1 leaves off
 
 [Part 1](https://fritschelab.org/practical-genai-coding-guide/) introduced planning, prompting, and reviewing code. Here you put those habits to work on a plot with overlapping bars and clipped labels.
 
-Download the [example repository](https://github.com/FritscheLab/practical-genai-agentic-coding-example), choose Python or R, and follow six lessons online or offline. Repair the plot without changing its values, check the agent's work, and leave a result a labmate can rerun.
+Choose Python or R, complete the [VS Code + Copilot setup](docs/setup/vscode-copilot.md), and follow six lessons online or offline. Clone the example through Source Control, repair the plot without changing its values, and leave a result a labmate can rerun. You can complete the main path without typing shell commands.
+
+Prefer Claude Code? Its [VS Code extension](docs/platforms/claude-code.md#use-the-vs-code-extension) supports the same exercise and visual Git review. Command-line users have a complete [CLI appendix](docs/appendix/command-line.md).
+
+**Keep your judgment and coding skills.** Working output can hide code you cannot explain or maintain. Review permissions, keep changes proportional to the task, and practise without AI so your work can continue if access becomes unavailable or prohibited. Read [permissions and independent work](docs/reference/agent-control.md).
 
 ![Grouped bars compare invented measurement-completeness counts for Groups A and B. Group B has more complete measurements, 64 versus 42; the linked specification lists all category values.](assets/images/plotting-target.png)
 
@@ -35,7 +41,7 @@ Your target: a readable chart for the fictional **Journal of Unnecessarily Speci
 
 Make accessibility part of every figure: readable labels, sufficient contrast, groups identifiable without color, and reviewed alternative text.
 
-If you are new to using GenAI for coding, begin with Part 1. If you can already run a script and inspect a change, [start here]({{ '/docs/quickstart.html' | relative_url }}).
+If you are new to using GenAI for coding, begin with Part 1. If you already work in Python or R, [start here]({{ '/docs/quickstart.html' | relative_url }}); the lessons explain the agent controls and Git review.
 
 <section class="guide-section" aria-labelledby="learning-heading">
   <div class="guide-section-heading">
@@ -44,10 +50,10 @@ If you are new to using GenAI for coding, begin with Part 1. If you can already 
     <p>Keep the project small so you can see the whole workflow.</p>
   </div>
   <ol class="guide-learning-path">
-    <li><span class="guide-step-number" aria-hidden="true">01</span><div><h3>Establish a working baseline</h3><p>Choose Python or R, run its tests, and open the baseline plot before asking an agent to edit anything.</p><a href="{{ '/docs/quickstart.html' | relative_url }}">Run the quickstart <span aria-hidden="true">→</span></a></div></li>
+    <li><span class="guide-step-number" aria-hidden="true">01</span><div><h3>Establish a working baseline</h3><p>Set up VS Code, ask Copilot to run the existing checks, and open the baseline plot in Explorer.</p><a href="{{ '/docs/quickstart.html' | relative_url }}">Open the quickstart <span aria-hidden="true">→</span></a></div></li>
     <li><span class="guide-step-number" aria-hidden="true">02</span><div><h3>Make the repository understandable</h3><p>Use a README, agent instructions, a repository map, and data contracts to make expectations explicit.</p><a href="{{ '/docs/practices/' | relative_url }}">Explore repository practices <span aria-hidden="true">→</span></a></div></li>
-    <li><span class="guide-step-number" aria-hidden="true">03</span><div><h3>Choose one small improvement</h3><p>Describe the change and how you will check it. Review its plan and the files it changes.</p><a href="{{ '/docs/lessons/' | relative_url }}">Work through the lessons <span aria-hidden="true">→</span></a></div></li>
-    <li><span class="guide-step-number" aria-hidden="true">04</span><div><h3>Leave a useful result</h3><p>Run the checks, compare the plots, and leave enough detail for a labmate to rerun the work.</p><a href="{{ '/docs/reference/' | relative_url }}">Read the exercise reference <span aria-hidden="true">→</span></a></div></li>
+    <li><span class="guide-step-number" aria-hidden="true">03</span><div><h3>Choose one small improvement</h3><p>Use Ask to understand, Plan to agree on the repair, and Agent to implement and check it.</p><a href="{{ '/docs/lessons/' | relative_url }}">Work through the lessons <span aria-hidden="true">→</span></a></div></li>
+    <li><span class="guide-step-number" aria-hidden="true">04</span><div><h3>Leave a useful result</h3><p>Compare the plots, review each diff in Source Control, and commit the source with a useful handoff.</p><a href="{{ '/docs/practices/repo_navigation.html' | relative_url }}">Learn visual Git review <span aria-hidden="true">→</span></a></div></li>
   </ol>
 </section>
 
@@ -57,7 +63,7 @@ If you are new to using GenAI for coding, begin with Part 1. If you can already 
     <h2 id="resources-heading">Choose what you need next</h2>
   </div>
   <div class="guide-resource-grid">
-    <div><h3>Set up your agent</h3><p>Prepare a coding tool to work with the example repository.</p><a href="{{ '/docs/platforms/' | relative_url }}">Agent setup <span aria-hidden="true">→</span></a></div>
+    <div><h3>Set up VS Code + Copilot</h3><p>Install the tools, sign in, clone the exercise, and make the first plot.</p><a href="{{ '/docs/setup/vscode-copilot.html' | relative_url }}">Detailed setup <span aria-hidden="true">→</span></a></div>
     <div><h3>Reuse the templates</h3><p>Write a task brief, agree on the data, or hand off unfinished work.</p><a href="{{ '/docs/templates/' | relative_url }}">Browse templates <span aria-hidden="true">→</span></a></div>
     <div><h3>Teach a lab session</h3><p>Use the 45-minute runbook and a focused live exercise.</p><a href="{{ '/docs/lab_meeting/' | relative_url }}">Teaching materials <span aria-hidden="true">→</span></a></div>
   </div>
